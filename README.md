@@ -8,10 +8,19 @@ review → confirm, plus appointments management and profile settings.
 > and appointment data is seeded mock content. It exists to demonstrate frontend
 > architecture, state management, testing and UI skills — not to ship as a product.
 
+### Dark Theme
+
 | | | | |
 |:-:|:-:|:-:|:-:|
-| ![Home](screenshots/home.png) | ![Service](screenshots/service.png) | ![Barber](screenshots/barber.png) | ![Time](screenshots/time.png) |
-| ![Review](screenshots/review.png) | ![Success](screenshots/success.png) | ![Appointments](screenshots/appointments.png) | ![Profile](screenshots/profile.png) |
+| ![Home](screenshots/dark/home.png) | ![Service](screenshots/dark/service.png) | ![Barber](screenshots/dark/barber.png) | ![Time](screenshots/dark/time.png) |
+| ![Review](screenshots/dark/review.png) | ![Success](screenshots/dark/success.png) | ![Appointments](screenshots/dark/appointments.png) | ![Profile](screenshots/dark/profile.png) |
+
+### Light Theme
+
+| | | | |
+|:-:|:-:|:-:|:-:|
+| ![Home](screenshots/light/home.png) | ![Service](screenshots/light/service.png) | ![Barber](screenshots/light/barber.png) | ![Time](screenshots/light/time.png) |
+| ![Review](screenshots/light/review.png) | ![Success](screenshots/light/success.png) | ![Appointments](screenshots/light/appointments.png) | ![Profile](screenshots/light/profile.png) |
 
 ## Features
 
