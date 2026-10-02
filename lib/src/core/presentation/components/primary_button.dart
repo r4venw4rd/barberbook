@@ -6,11 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
-/// Primary action button with modern depth: a brand gradient fill, a glossy
-/// sheen, a soft coloured glow underneath and a press-in scale.
-///
-/// Colours come from [AppColors] tokens only, so the palette never changes
-/// between light and dark themes.
+/// Primary action button with depth: brand gradient, glow and press scale.
 class PrimaryButton extends HookWidget {
   const new({
     required this.onPressed,
@@ -22,22 +18,11 @@ class PrimaryButton extends HookWidget {
     this.padding,
   });
 
-  /// Called on tap; `null` renders the button disabled and dimmed.
   final VoidCallback? onPressed;
-
-  /// Content of the button, usually a [Text] label.
   final Widget child;
-
-  /// Overrides the palette fill gradient.
   final Gradient? gradient;
-
-  /// Overrides the label and ripple colour.
   final Color? foregroundColor;
-
-  /// Overrides the coloured glow.
   final Color? shadowColor;
-
-  /// Overrides the default content padding.
   final EdgeInsetsGeometry? padding;
 
   @override
@@ -46,17 +31,11 @@ class PrimaryButton extends HookWidget {
     final enabled = onPressed != null;
     final active = pressed.value && enabled;
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
-    final isDark = context.isDarkTheme;
     final theme = Theme.of(context);
     final radius = BorderRadius.circular(AppRadius.lg);
-
-    final fill =
-        gradient ??
-        (isDark ? AppColors.darkPrimaryGradient : AppColors.primaryGradient);
-    final glow =
-        shadowColor ??
-        (isDark ? AppColors.darkShadowPrimary : AppColors.shadowPrimary);
-    final foreground = foregroundColor ?? theme.colorScheme.onPrimary;
+    final fill = gradient ?? context.primaryGradient;
+    final glow = shadowColor ?? context.primaryShadow;
+    final foreground = foregroundColor ?? AppColors.onPrimary;
 
     return Semantics(
       button: true,
@@ -91,11 +70,10 @@ class PrimaryButton extends HookWidget {
             child: ClipRRect(
               borderRadius: radius,
               child: Material(
-                color: Colors.transparent,
+                color: AppColors.clear,
                 child: Ink(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: AppColors.buttonSheenGradient,
-                    borderRadius: radius,
                   ),
                   child: InkWell(
                     onTap: enabled
@@ -104,13 +82,11 @@ class PrimaryButton extends HookWidget {
                             onPressed?.call();
                           }
                         : null,
-                    onHighlightChanged: (value) => pressed.value = value,
-                    borderRadius: radius,
+                    onHighlightChanged: (v) => pressed.value = v,
                     highlightColor: foreground.withValues(alpha: 0.18),
                     splashColor: foreground.withValues(alpha: 0.10),
                     child: Padding(
-                      padding:
-                          padding ??
+                      padding: padding ??
                           const EdgeInsets.symmetric(
                             horizontal: AppSpace.xl,
                             vertical: AppSpace.md,
