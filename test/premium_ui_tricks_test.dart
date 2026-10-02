@@ -13,9 +13,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           theme: AppTheme.light(),
-          home: const Scaffold(
-            body: ServiceScrollerSkeleton(),
-          ),
+          home: const Scaffold(body: ServiceScrollerSkeleton()),
         ),
       );
 
@@ -27,45 +25,50 @@ void main() {
       expect(find.byType(ShimmerBox), findsWidgets);
     });
 
-    testWidgets('BouncingWrapper scales down on tap down and resets on release', (
-      tester,
-    ) async {
-      var tapped = false;
+    testWidgets(
+      'BouncingWrapper scales down on tap down and resets on release',
+      (tester) async {
+        var tapped = false;
 
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AppTheme.light(),
-          home: Scaffold(
-            body: Center(
-              child: BouncingWrapper(
-                onTap: () => tapped = true,
-                child: const Text('Bounce Me'),
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: AppTheme.light(),
+            home: Scaffold(
+              body: Center(
+                child: BouncingWrapper(
+                  onTap: () => tapped = true,
+                  child: const Text('Bounce Me'),
+                ),
               ),
             ),
           ),
-        ),
-      );
+        );
 
-      final textFinder = find.text('Bounce Me');
-      expect(textFinder, findsOneWidget);
+        final textFinder = find.text('Bounce Me');
+        expect(textFinder, findsOneWidget);
 
-      final gesture = await tester.startGesture(tester.getCenter(textFinder));
-      await tester.pump(const Duration(milliseconds: 50));
+        final gesture = await tester.startGesture(tester.getCenter(textFinder));
+        await tester.pump(const Duration(milliseconds: 50));
 
-      final animatedScale = tester.widget<AnimatedScale>(
-        find.ancestor(of: textFinder, matching: find.byType(AnimatedScale)).first,
-      );
-      expect(animatedScale.scale, equals(0.96));
+        final animatedScale = tester.widget<AnimatedScale>(
+          find
+              .ancestor(of: textFinder, matching: find.byType(AnimatedScale))
+              .first,
+        );
+        expect(animatedScale.scale, equals(0.96));
 
-      await gesture.up();
-      await tester.pumpAndSettle();
+        await gesture.up();
+        await tester.pumpAndSettle();
 
-      expect(tapped, isTrue);
-      final resetScale = tester.widget<AnimatedScale>(
-        find.ancestor(of: textFinder, matching: find.byType(AnimatedScale)).first,
-      );
-      expect(resetScale.scale, equals(1.0));
-    });
+        expect(tapped, isTrue);
+        final resetScale = tester.widget<AnimatedScale>(
+          find
+              .ancestor(of: textFinder, matching: find.byType(AnimatedScale))
+              .first,
+        );
+        expect(resetScale.scale, equals(1.0));
+      },
+    );
 
     testWidgets('FrostedAppBar renders with BackdropFilter and title', (
       tester,
@@ -74,9 +77,7 @@ void main() {
         MaterialApp(
           theme: AppTheme.light(),
           home: const Scaffold(
-            appBar: FrostedAppBar(
-              title: Text('Frosted Title'),
-            ),
+            appBar: FrostedAppBar(title: Text('Frosted Title')),
             body: Text('Content'),
           ),
         ),
