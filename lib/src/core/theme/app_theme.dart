@@ -234,6 +234,9 @@ abstract final class AppTheme {
           side: BorderSide(
             color: isDark ? AppColors.darkBorder : AppColors.border,
           ),
+          backgroundColor: (isDark ? AppColors.darkCard : AppColors.card)
+              .withValues(alpha: 0.8),
+          surfaceTintColor: Colors.transparent,
           foregroundColor: colorScheme.onSurface,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -248,6 +251,7 @@ abstract final class AppTheme {
           minimumSize: const Size(48, kTouchTarget),
           foregroundColor: colorScheme.onSurfaceVariant,
           textStyle: textTheme.titleSmall,
+          overlayColor: colorScheme.primary.withValues(alpha: 0.10),
         ),
       ),
       cardTheme: CardThemeData(
