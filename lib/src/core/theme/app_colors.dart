@@ -162,6 +162,12 @@ abstract final class AppColors {
   /// Shadow colour of bottom action bars.
   static const shadowBar = Color(0x0E000000);
 
+  /// Coloured glow under primary buttons (light — [primary] at 40%).
+  static const shadowPrimary = Color(0x66C78B2A);
+
+  /// Coloured glow under primary buttons (dark — [darkPrimary] at 35%).
+  static const darkShadowPrimary = Color(0x59E5A93C);
+
   /// Gold glow used for selected states and premium highlights.
   static const goldGlow = Color(0x26C78B2A);
 
@@ -185,11 +191,29 @@ abstract final class AppColors {
   static const goldShimmerGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [
-      Color(0x1AE5A93C),
-      Color(0x06E5A93C),
-      Color(0x00E5A93C),
-    ],
+    colors: [Color(0x1AE5A93C), Color(0x06E5A93C), Color(0x00E5A93C)],
     stops: [0.0, 0.45, 1.0],
+  );
+
+  /// Primary button fill — [primary] sinking into [primaryStrong].
+  static const primaryGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [primary, primaryStrong],
+  );
+
+  /// Primary button fill in dark mode — [darkSecondary] over [darkPrimary].
+  static const darkPrimaryGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [darkSecondary, darkPrimary],
+  );
+
+  /// Glossy sheen over the top half of primary buttons ([onPrimary]
+  /// fading to clear).
+  static const buttonSheenGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.center,
+    colors: [Color(0x33FFFFFF), Color(0x00FFFFFF)],
   );
 }
