@@ -68,10 +68,10 @@ class _SplashPageState extends ConsumerState<SplashPage>
       orElse: () => false,
     );
     
-    // If onboarding seen but not authenticated, redirect to auth
+    // If onboarding seen but not authenticated, redirect to welcome
     // This prevents logged-out users from accessing restricted pages
     if (!isAuthenticated) {
-      context.go('/auth');
+      context.go('/welcome');
       return;
     }
     

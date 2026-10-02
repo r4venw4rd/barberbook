@@ -55,6 +55,10 @@ GoRouter createAppRouter() => GoRouter(
   observers: [navBarObserver],
   routes: [
     GoRoute(
+      path: '/',
+      redirect: (context, state) => '/splash',
+    ),
+    GoRoute(
       path: '/splash',
       pageBuilder: (context, state) => _fadePage(
         key: state.pageKey,
