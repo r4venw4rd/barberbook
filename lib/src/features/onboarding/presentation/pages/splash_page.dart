@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/app_background_pattern.dart';
 import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
+import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
 import 'package:hair_dryer_app/src/features/home/presentation/components/snipping_scissors.dart';
 import 'package:hair_dryer_app/src/features/onboarding/application/notifiers/onboarding_notifier.dart';
 
@@ -53,7 +54,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
   void _navigateNext() {
     if (!mounted) return;
     final hasSeenOnboarding = ref.read(onboardingCompletedProvider);
-    final authState = ref.read(authProvider);
+    final authAsync = ref.read(authNotifierProvider);
     
     // If onboarding not seen, show welcome tutorial
     if (!hasSeenOnboarding) {
@@ -61,9 +62,15 @@ class _SplashPageState extends ConsumerState<SplashPage>
       return;
     }
     
+    // Check if user is authenticated (has user data)
+    final isAuthenticated = authAsync.maybeWhen(
+      data: (user) => user != null,
+      orElse: () => false,
+    );
+    
     // If onboarding seen but not authenticated, redirect to auth
     // This prevents logged-out users from accessing restricted pages
-    if (!authState.isAuthenticated) {
+    if (!isAuthenticated) {
       context.go('/auth');
       return;
     }
