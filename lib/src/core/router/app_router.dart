@@ -55,7 +55,9 @@ CustomTransitionPage<void> _fadePage({
 const Set<String> _publicLocations = {'/', '/splash', '/welcome'};
 
 /// Redirects [location] based on the current [session].
-String? _sessionRedirect(AsyncValue<User?> session, String location) {
+///
+/// Returns null when navigation may continue unchanged.
+String? sessionRedirect(AsyncValue<User?> session, String location) {
   // The session is still resolving; the splash screen decides once it lands.
   if (session.isLoading && session.value == null) return null;
 
@@ -73,7 +75,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     refreshListenable: refresh,
     observers: [navBarObserver],
     redirect: (context, state) =>
-        _sessionRedirect(ref.read(authNotifierProvider), state.matchedLocation),
+        sessionRedirect(ref.read(authNotifierProvider), state.matchedLocation),
     routes: [
       GoRoute(path: '/', redirect: (context, state) => '/splash'),
       GoRoute(
