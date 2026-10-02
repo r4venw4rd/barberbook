@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart' show GoRouter;
 
 /// Tracks whether a modal/popup route (bottom sheet, dialog, etc.) is
 /// currently overlaid on top of the navigator. Exposes this via

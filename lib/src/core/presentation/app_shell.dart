@@ -46,7 +46,7 @@ class _MobileShell extends StatelessWidget {
     // Floating nav sits above safe area with a small gap
     const navHeight = 64.0;
     const navHMargin = 20.0; // horizontal inset from screen edges
-    const navBGap = 10.0;    // gap above safe area (or screen bottom)
+    const navBGap = 10.0; // gap above safe area (or screen bottom)
     final navBottomOffset = bottomPad + navBGap;
 
     return Scaffold(
@@ -64,8 +64,9 @@ class _MobileShell extends StatelessWidget {
                     ? Duration.zero
                     : const Duration(milliseconds: 320),
                 curve: isVisible
-                    ? Curves.easeOutBack   // spring back up
-                    : Curves.easeInCubic,  // quick dive down
+                    ? Curves
+                          .easeOutBack // spring back up
+                    : Curves.easeInCubic, // quick dive down
                 left: navHMargin,
                 right: navHMargin,
                 bottom: isVisible
@@ -77,7 +78,7 @@ class _MobileShell extends StatelessWidget {
                       ? Duration.zero
                       : const Duration(milliseconds: 200),
                   opacity: isVisible ? 1.0 : 0.0,
-                  child: child!,
+                  child: child,
                 ),
               );
             },
@@ -120,7 +121,7 @@ class _MobileShell extends StatelessWidget {
 // ---------------------------------------------------------------------------
 
 class _NavItem {
-  const _NavItem({
+  const new({
     required this.icon,
     required this.selectedIcon,
     required this.label,
@@ -131,7 +132,7 @@ class _NavItem {
 }
 
 class _FloatingGlassNavBar extends StatelessWidget {
-  const _FloatingGlassNavBar({
+  const new({
     required this.selectedIndex,
     required this.isDark,
     required this.accent,
@@ -162,7 +163,7 @@ class _FloatingGlassNavBar extends StatelessWidget {
         : Colors.white.withValues(alpha: 0.70);
 
     const radius = Radius.circular(AppRadius.xxl);
-    final borderRadius = BorderRadius.all(radius);
+    const borderRadius = BorderRadius.all(radius);
 
     return DecoratedBox(
       // Outer shadow so the pill "floats" off the background
@@ -194,7 +195,7 @@ class _FloatingGlassNavBar extends StatelessWidget {
             decoration: BoxDecoration(
               color: glassFill,
               borderRadius: borderRadius,
-              border: Border.all(color: glassRimColor, width: 1),
+              border: Border.all(color: glassRimColor),
             ),
             child: Row(
               children: [
@@ -219,7 +220,7 @@ class _FloatingGlassNavBar extends StatelessWidget {
 }
 
 class _NavTile extends StatelessWidget {
-  const _NavTile({
+  const new({
     required this.item,
     required this.isSelected,
     required this.accent,
@@ -239,7 +240,9 @@ class _NavTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final unselectedColor = Theme.of(context).colorScheme.onSurfaceVariant;
     final resolvedColor = isSelected ? accent : unselectedColor;
-    final dur = reduceMotion ? Duration.zero : const Duration(milliseconds: 220);
+    final dur = reduceMotion
+        ? Duration.zero
+        : const Duration(milliseconds: 220);
 
     return Semantics(
       button: true,
@@ -339,9 +342,7 @@ class _TabletShell extends StatelessWidget {
             ],
           ),
           const VerticalDivider(thickness: 1, width: 1),
-          Expanded(
-            child: AppBackgroundPattern(child: shell),
-          ),
+          Expanded(child: AppBackgroundPattern(child: shell)),
         ],
       ),
     );
@@ -399,9 +400,7 @@ class _DesktopShell extends StatelessWidget {
             ],
           ),
           const VerticalDivider(thickness: 1, width: 1),
-          Expanded(
-            child: AppBackgroundPattern(child: shell),
-          ),
+          Expanded(child: AppBackgroundPattern(child: shell)),
         ],
       ),
     );
