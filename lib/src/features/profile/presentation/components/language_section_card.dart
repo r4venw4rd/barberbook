@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/gradient_tick.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/features/profile/application/notifiers/locale_notifier.dart';
 import 'package:hair_dryer_app/src/features/profile/presentation/components/profile_menu_tile.dart';
 
@@ -32,12 +32,11 @@ class LanguageSectionCard extends ConsumerWidget {
               icon: entry.$2,
               label: entry.$3,
               selected: entry.$1 == activeLocale,
-              trailing: entry.$1 == activeLocale
-                  ? Icon(
-                      Icons.check_circle,
-                      color: context.accentStrong,
-                    )
-                  : const SizedBox.shrink(),
+              trailing: GradientTick(
+                size: 22,
+                selected: entry.$1 == activeLocale,
+                isRadio: true,
+              ),
               onTap: () {
                 ref.read(localeProvider.notifier).setLocale(entry.$1);
               },

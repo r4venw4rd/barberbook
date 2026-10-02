@@ -8,10 +8,7 @@ import 'package:hair_dryer_app/src/features/auth/domain/entities/user.dart';
 /// Card showing large avatar with interactive photo badge.
 class AvatarEditCard extends StatelessWidget {
   /// Creates the avatar edit card.
-  const new({
-    required this.user,
-    super.key,
-  });
+  const new({required this.user, super.key});
 
   /// The active user.
   final User? user;
@@ -42,10 +39,7 @@ class AvatarEditCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.primary,
                       shape: BoxShape.circle,
-                      border: Border.all(
-                        color: context.cardSurface,
-                        width: 2,
-                      ),
+                      border: Border.all(color: context.cardSurface, width: 2),
                     ),
                     child: const Icon(
                       Icons.camera_alt_outlined,

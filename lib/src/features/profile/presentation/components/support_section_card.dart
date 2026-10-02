@@ -27,19 +27,16 @@ class SupportSectionCard extends ConsumerWidget {
           ProfileMenuTile(
             icon: Icons.help_outline,
             label: l10n.helpCenter,
-            onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(l10n.helpCenterInfo),
-              ),
-            ),
+            onTap: () =>
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(l10n.helpCenterInfo))),
           ),
           const Divider(height: 1, indent: 56),
           ProfileMenuTile(
             icon: Icons.chat_bubble_outline,
             label: l10n.contactShop,
-            onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(l10n.contactShopInfo)),
-            ),
+            onTap: () => ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(l10n.contactShopInfo))),
           ),
           if (user != null && !user.isGuest) ...[
             const Divider(height: 1, indent: 56),
@@ -50,9 +47,8 @@ class SupportSectionCard extends ConsumerWidget {
               onTap: () async {
                 await ref.read(authNotifierProvider.notifier).logout();
                 if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(l10n.loggedOut)),
-                  );
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(l10n.loggedOut)));
                 }
               },
             ),

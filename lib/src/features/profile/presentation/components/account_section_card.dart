@@ -1,20 +1,24 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/gradient_switch.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
 import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
 import 'package:hair_dryer_app/src/features/auth/presentation/components/auth_modal.dart';
 import 'package:hair_dryer_app/src/features/profile/presentation/components/profile_menu_tile.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class AccountSectionCard extends ConsumerWidget {
+class AccountSectionCard extends HookConsumerWidget {
   const new({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
     final user = ref.watch(authNotifierProvider).value;
+    final pushEnabled = useState(true);
 
     return SoftCard(
       padding: EdgeInsets.zero,
@@ -41,15 +45,18 @@ class AccountSectionCard extends ConsumerWidget {
           ProfileMenuTile(
             icon: Icons.notifications_outlined,
             label: l10n.pushNotifications,
-            trailing: Switch.adaptive(
-              value: true,
-              onChanged: (value) => ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    value ? l10n.remindersEnabled : l10n.remindersDisabled,
+            trailing: GradientSwitch(
+              value: pushEnabled.value,
+              onChanged: (value) {
+                pushEnabled.value = value;
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      value ? l10n.remindersEnabled : l10n.remindersDisabled,
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ),
         ],

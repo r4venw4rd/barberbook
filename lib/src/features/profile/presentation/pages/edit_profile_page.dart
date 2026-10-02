@@ -32,36 +32,30 @@ class EditProfilePage extends HookConsumerWidget {
       final phone = phoneController.text.trim();
 
       if (name.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.nameRequired)),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(l10n.nameRequired)));
         return;
       }
       if (!email.contains('@')) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.emailInvalid)),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(l10n.emailInvalid)));
         return;
       }
 
       isSaving.value = true;
-      final ok = await ref.read(authNotifierProvider.notifier).updateProfile(
-            name: name,
-            email: email,
-            phone: phone,
-          );
+      final ok = await ref
+          .read(authNotifierProvider.notifier)
+          .updateProfile(name: name, email: email, phone: phone);
       isSaving.value = false;
 
       if (!context.mounted) return;
       if (ok) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.profileUpdated)),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(l10n.profileUpdated)));
         context.pop();
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.profileUpdateFailed)),
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(l10n.profileUpdateFailed)));
       }
     }
 

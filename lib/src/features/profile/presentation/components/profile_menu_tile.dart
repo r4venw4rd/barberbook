@@ -35,7 +35,8 @@ class ProfileMenuTile extends StatelessWidget {
             label,
             style: Theme.of(context).textTheme.titleSmall?.copyWith(color: fg),
           ),
-          trailing: trailing ??
+          trailing:
+              trailing ??
               Icon(
                 Icons.chevron_right,
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
