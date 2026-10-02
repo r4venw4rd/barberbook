@@ -36,11 +36,13 @@ class SignUpForm extends HookConsumerWidget {
       }
       mismatch.value = false;
       isSubmitting.value = true;
-      final ok = await ref.read(authNotifierProvider.notifier).register(
-        name: nameController.text,
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      final ok = await ref
+          .read(authNotifierProvider.notifier)
+          .register(
+            name: nameController.text,
+            email: emailController.text,
+            password: passwordController.text,
+          );
       isSubmitting.value = false;
       if (ok) onSignedIn?.call();
     }

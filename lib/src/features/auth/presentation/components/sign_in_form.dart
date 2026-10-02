@@ -28,10 +28,12 @@ class SignInForm extends HookConsumerWidget {
       if (isSubmitting.value) return;
       attempted.value = true;
       isSubmitting.value = true;
-      final ok = await ref.read(authNotifierProvider.notifier).login(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      final ok = await ref
+          .read(authNotifierProvider.notifier)
+          .login(
+            email: emailController.text,
+            password: passwordController.text,
+          );
       isSubmitting.value = false;
       if (ok) onSignedIn?.call();
     }
