@@ -5,8 +5,6 @@ import 'package:hair_dryer_app/src/features/auth/domain/entities/user.dart';
 import 'package:hair_dryer_app/src/features/auth/infrastructure/repositories/auth_repository.dart';
 import 'package:hair_dryer_app/src/features/auth/infrastructure/services/auth_local_service.dart';
 
-final localStorageProvider = Provider<LocalStorageService?>((ref) => null);
-
 final authLocalServiceProvider = Provider<AuthLocalService>((ref) {
   final storage = ref.watch(localStorageProvider);
   return AuthLocalService(storage);

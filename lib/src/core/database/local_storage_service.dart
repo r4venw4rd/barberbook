@@ -1,5 +1,9 @@
 import 'dart:convert';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+/// Key-value storage instance, overridden with a real one in `main()`.
+final localStorageProvider = Provider<LocalStorageService?>((ref) => null);
 
 /// Central local storage service for key-value and JSON document persistence.
 class LocalStorageService {

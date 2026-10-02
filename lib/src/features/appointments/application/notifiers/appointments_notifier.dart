@@ -6,8 +6,8 @@ import 'package:hair_dryer_app/src/features/appointments/domain/entities/appoint
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/barber.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/time_slot.dart';
+import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
 import 'package:hair_dryer_app/src/features/appointments/infrastructure/repositories/appointment_repository.dart';
-import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
 
 final appointmentRepositoryProvider = Provider<AppointmentRepository>((ref) {
   final storage = ref.watch(localStorageProvider);
