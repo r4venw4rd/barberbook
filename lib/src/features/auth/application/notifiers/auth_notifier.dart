@@ -18,6 +18,24 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepository(service);
 });
 
+/// Last authentication failure reported to the UI.
+class AuthFailureNotifier extends Notifier<Object?> {
+  @override
+  Object? build() => null;
+
+  /// The failure forms should render, if any.
+  Object? get failure => state;
+
+  /// Publishes the failure that forms should render.
+  set failure(Object? value) => state = value;
+
+  /// Drops any previously reported failure.
+  void clear() => state = null;
+}
+
+final authFailureProvider =
+    NotifierProvider<AuthFailureNotifier, Object?>(AuthFailureNotifier.new);
+
 /// Reactive holder of the signed-in user, backed by the local database.
 class AuthNotifier extends AsyncNotifier<User?> {
   @override
@@ -32,34 +50,32 @@ class AuthNotifier extends AsyncNotifier<User?> {
     required String email,
     required String password,
     String? phone,
-  }) async {
-    state = const AsyncValue.loading();
-    final result = await ref.read(authRepositoryProvider).register(
-      name: name,
-      email: email,
-      password: password,
-      phone: phone,
+  }) {
+    return _attempt(
+      ref.read(authRepositoryProvider).register(
+        name: name,
+        email: email,
+        password: password,
+        phone: phone,
+      ),
     );
-    return _publish(result);
   }
 
   /// Verifies credentials and stores the session.
   Future<bool> login({
     required String email,
     required String password,
-  }) async {
-    state = const AsyncValue.loading();
-    final result = await ref
-        .read(authRepositoryProvider)
-        .login(email: email, password: password);
-    return _publish(result);
+  }) {
+    return _attempt(
+      ref
+          .read(authRepositoryProvider)
+          .login(email: email, password: password),
+    );
   }
 
   /// Signs in with the throwaway guest profile.
-  Future<bool> loginAsGuest() async {
-    state = const AsyncValue.loading();
-    final result = await ref.read(authRepositoryProvider).loginAsGuest();
-    return _publish(result);
+  Future<bool> loginAsGuest() {
+    return _attempt(ref.read(authRepositoryProvider).loginAsGuest());
   }
 
   /// Updates profile details of the signed-in user.
@@ -92,13 +108,17 @@ class AuthNotifier extends AsyncNotifier<User?> {
   /// Ends the session.
   Future<void> logout() async {
     await ref.read(authRepositoryProvider).logout();
+    ref.read(authFailureProvider.notifier).clear();
     state = const AsyncValue.data(null);
   }
 
-  bool _publish(Either<AuthFailure, User> result) {
-    return result.fold(
+  /// Runs [operation] and either publishes the user or reports the failure.
+  Future<bool> _attempt(Future<Either<AuthFailure, User>> operation) async {
+    ref.read(authFailureProvider.notifier).clear();
+    final result = await operation;
+    return result.fold<bool>(
       (failure) {
-        state = AsyncValue.error(failure, StackTrace.current);
+        ref.read(authFailureProvider.notifier).failure = failure;
         return false;
       },
       (user) {

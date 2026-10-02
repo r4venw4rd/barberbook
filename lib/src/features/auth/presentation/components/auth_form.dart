@@ -18,12 +18,13 @@ class AuthForm extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
     final isSignIn = useState(true);
-    final isBusy = ref.watch(
-      authNotifierProvider.select((state) => state.isLoading),
-    );
+    final guestSubmitting = useState(false);
 
     Future<void> continueAsGuest() async {
+      if (guestSubmitting.value) return;
+      guestSubmitting.value = true;
       final ok = await ref.read(authNotifierProvider.notifier).loginAsGuest();
+      guestSubmitting.value = false;
       if (ok) onSignedIn?.call();
     }
 
@@ -47,7 +48,7 @@ class AuthForm extends HookConsumerWidget {
         ),
         const SizedBox(height: AppSpace.xs),
         OutlinedButton(
-          onPressed: isBusy ? null : continueAsGuest,
+          onPressed: guestSubmitting.value ? null : continueAsGuest,
           child: Text(l10n.continueAsGuest),
         ),
       ],

@@ -21,9 +21,7 @@ class SignInForm extends HookConsumerWidget {
     final passwordController = useTextEditingController();
     final attempted = useState(false);
     final isSubmitting = useState(false);
-    final failure = ref.watch(
-      authNotifierProvider.select((state) => state.error),
-    );
+    final failure = ref.watch(authFailureProvider);
 
     Future<void> submit() async {
       if (isSubmitting.value) return;
