@@ -76,8 +76,7 @@ class AuthLocalService {
     }
     final record = database.users.get(userId);
     if (record != null) {
-      await database.emailIndex
-          .delete(normalizeEmail('${record['email']}'));
+      await database.emailIndex.delete(normalizeEmail('${record['email']}'));
     }
     await database.users.delete(userId);
   }

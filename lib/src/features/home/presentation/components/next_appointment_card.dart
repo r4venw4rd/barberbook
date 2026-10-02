@@ -116,8 +116,9 @@ class NextAppointmentCard extends ConsumerWidget {
                 child: TextButton(
                   onPressed: () => _confirmCancel(context, ref),
                   style: TextButton.styleFrom(
-                    foregroundColor:
-                        Theme.of(context).colorScheme.onSurfaceVariant,
+                    foregroundColor: Theme.of(context)
+                        .colorScheme
+                        .onSurfaceVariant,
                   ),
                   child: Text(l10n.cancel),
                 ),
@@ -132,17 +133,12 @@ class NextAppointmentCard extends ConsumerWidget {
   void _confirmCancel(BuildContext context, WidgetRef ref) {
     final l10n = context.l10n;
     unawaited(
-      CancelAppointmentModal.show(
-        context,
-        appointment,
-        () {
-          ref.read(appointmentsProvider.notifier).cancel(appointment.id);
-          Navigator.of(context).pop();
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(l10n.appointmentCancelled)),
-          );
-        },
-      ),
+      CancelAppointmentModal.show(context, appointment, () {
+        ref.read(appointmentsProvider.notifier).cancel(appointment.id);
+        Navigator.of(context).pop();
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(l10n.appointmentCancelled)));
+      }),
     );
   }
 }

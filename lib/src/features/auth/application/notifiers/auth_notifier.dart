@@ -33,8 +33,9 @@ class AuthFailureNotifier extends Notifier<Object?> {
   void clear() => state = null;
 }
 
-final authFailureProvider =
-    NotifierProvider<AuthFailureNotifier, Object?>(AuthFailureNotifier.new);
+final authFailureProvider = NotifierProvider<AuthFailureNotifier, Object?>(
+  AuthFailureNotifier.new,
+);
 
 /// Reactive holder of the signed-in user, backed by the local database.
 class AuthNotifier extends AsyncNotifier<User?> {
@@ -52,24 +53,16 @@ class AuthNotifier extends AsyncNotifier<User?> {
     String? phone,
   }) {
     return _attempt(
-      ref.read(authRepositoryProvider).register(
-        name: name,
-        email: email,
-        password: password,
-        phone: phone,
-      ),
+      ref
+          .read(authRepositoryProvider)
+          .register(name: name, email: email, password: password, phone: phone),
     );
   }
 
   /// Verifies credentials and stores the session.
-  Future<bool> login({
-    required String email,
-    required String password,
-  }) {
+  Future<bool> login({required String email, required String password}) {
     return _attempt(
-      ref
-          .read(authRepositoryProvider)
-          .login(email: email, password: password),
+      ref.read(authRepositoryProvider).login(email: email, password: password),
     );
   }
 
@@ -96,13 +89,10 @@ class AuthNotifier extends AsyncNotifier<User?> {
     final result = await ref
         .read(authRepositoryProvider)
         .updateProfile(updated);
-    return result.fold<bool>(
-      (failure) => false,
-      (user) {
-        state = AsyncValue.data(user);
-        return true;
-      },
-    );
+    return result.fold<bool>((failure) => false, (user) {
+      state = AsyncValue.data(user);
+      return true;
+    });
   }
 
   /// Ends the session.
@@ -129,5 +119,6 @@ class AuthNotifier extends AsyncNotifier<User?> {
   }
 }
 
-final authNotifierProvider =
-    AsyncNotifierProvider<AuthNotifier, User?>(AuthNotifier.new);
+final authNotifierProvider = AsyncNotifierProvider<AuthNotifier, User?>(
+  AuthNotifier.new,
+);

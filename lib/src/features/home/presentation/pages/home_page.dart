@@ -45,10 +45,7 @@ class HomePage extends ConsumerWidget {
                   child: NextAppointmentCard(appointment: next),
                 ),
               ],
-              SectionHeader(
-                title: l10n.services,
-                actionLabel: l10n.seeAll,
-              ),
+              SectionHeader(title: l10n.services, actionLabel: l10n.seeAll),
               const ServiceScroller(),
               SectionHeader(title: l10n.topBarbers),
               const BarberScroller(),

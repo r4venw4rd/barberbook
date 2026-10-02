@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment.dart';
@@ -81,8 +82,7 @@ class AppointmentRepository {
           reviewCount: 328,
           initials: 'MR',
           accentColorValue: 0xFFE5A93C,
-          avatarUrl:
-              'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
+          avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
         ),
         start: upcoming,
         notes: 'Same length on top as last time',
@@ -109,8 +109,7 @@ class AppointmentRepository {
           reviewCount: 176,
           initials: 'LO',
           accentColorValue: 0xFF047857,
-          avatarUrl:
-              'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=300&auto=format&fit=crop&q=80',
+          avatarUrl: 'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=300&auto=format&fit=crop&q=80',
         ),
         start: past,
         notes: '',
@@ -137,8 +136,7 @@ class AppointmentRepository {
           reviewCount: 214,
           initials: 'DS',
           accentColorValue: 0xFF0891B2,
-          avatarUrl:
-              'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
+          avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
         ),
         start: past.subtract(const Duration(days: 21)),
         notes: '',

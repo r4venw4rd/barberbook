@@ -80,8 +80,7 @@ class AppointmentMockService {
         'initials': 'MR',
         'accentColorValue': 0xFFE5A93C,
         'isAvailableToday': true,
-        'avatarUrl':
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
+        'avatarUrl': 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
       },
       {
         'id': 'diego',
@@ -93,8 +92,7 @@ class AppointmentMockService {
         'initials': 'DS',
         'accentColorValue': 0xFF3A3F4D,
         'isAvailableToday': true,
-        'avatarUrl':
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
+        'avatarUrl': 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
       },
       {
         'id': 'liam',
@@ -106,8 +104,7 @@ class AppointmentMockService {
         'initials': 'LO',
         'accentColorValue': 0xFF4A453A,
         'isAvailableToday': true,
-        'avatarUrl':
-            'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=300&auto=format&fit=crop&q=80',
+        'avatarUrl': 'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=300&auto=format&fit=crop&q=80',
       },
       {
         'id': 'sofia',
@@ -119,8 +116,7 @@ class AppointmentMockService {
         'initials': 'SM',
         'accentColorValue': 0xFF4E3D42,
         'isAvailableToday': false,
-        'avatarUrl':
-            'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80',
+        'avatarUrl': 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80',
       },
     ];
   }
@@ -151,8 +147,7 @@ class AppointmentMockService {
           'initials': 'MR',
           'accentColorValue': 0xFFE5A93C,
           'isAvailableToday': true,
-          'avatarUrl':
-              'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
+          'avatarUrl': 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
         },
         'startIso': upcoming.toIso8601String(),
         'notes': 'Same length on top as last time',
@@ -180,8 +175,7 @@ class AppointmentMockService {
           'initials': 'LO',
           'accentColorValue': 0xFF047857,
           'isAvailableToday': true,
-          'avatarUrl':
-              'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=300&auto=format&fit=crop&q=80',
+          'avatarUrl': 'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=300&auto=format&fit=crop&q=80',
         },
         'startIso': past.toIso8601String(),
         'notes': '',
@@ -209,8 +203,7 @@ class AppointmentMockService {
           'initials': 'DS',
           'accentColorValue': 0xFF0891B2,
           'isAvailableToday': true,
-          'avatarUrl':
-              'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
+          'avatarUrl': 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
         },
         'startIso': past.add(const Duration(days: -21)).toIso8601String(),
         'notes': '',

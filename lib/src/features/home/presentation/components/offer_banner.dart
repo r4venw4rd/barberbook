@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
+/// Promotional banner highlighting special offers with brand styling.
 class OfferBanner extends StatelessWidget {
   const new({super.key});
 
@@ -18,58 +18,39 @@ class OfferBanner extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppRadius.xl),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: isDark
-                ? [
-                    AppColors.darkCardElevated,
-                    AppColors.darkCard,
-                  ]
-                : [
-                    const Color(0xFFFFF9EF),
-                    const Color(0xFFFFFBF4),
-                  ],
-          ),
+          gradient: context.offerGradient,
           border: Border.all(
-            color: accent.withValues(alpha: isDark ? 0.25 : 0.22),
+            color: accent.withValues(alpha: isDark ? 0.25 : 0.20),
           ),
-          boxShadow: isDark
-              ? null
-              : [
-                  BoxShadow(
-                    color: accent.withValues(alpha: 0.06),
-                    blurRadius: 16,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
+          boxShadow: [
+            BoxShadow(
+              color: isDark
+                  ? Colors.black.withValues(alpha: 0.20)
+                  : accent.withValues(alpha: 0.05),
+              blurRadius: 16,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
         padding: const EdgeInsets.all(AppSpace.lg),
         child: Row(
           children: [
-            // Offer icon
             Container(
-              width: 46,
-              height: 46,
+              width: 44,
+              height: 44,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    accent.withValues(alpha: 0.20),
-                    accent.withValues(alpha: 0.08),
+                    accent.withValues(alpha: 0.18),
+                    accent.withValues(alpha: 0.06),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(AppRadius.md + 2),
-                border: Border.all(
-                  color: accent.withValues(alpha: 0.28),
-                ),
+                border: Border.all(color: accent.withValues(alpha: 0.28)),
               ),
-              child: Icon(
-                Icons.local_offer_outlined,
-                color: accent,
-                size: 22,
-              ),
+              child: Icon(Icons.local_offer_outlined, color: accent, size: 22),
             ),
             const SizedBox(width: AppSpace.md),
             Expanded(
@@ -78,15 +59,11 @@ class OfferBanner extends StatelessWidget {
                 children: [
                   Text(l10n.offerTitle, style: textTheme.titleSmall),
                   const SizedBox(height: 2),
-                  Text(
-                    l10n.offerSubtitle,
-                    style: textTheme.bodySmall,
-                  ),
+                  Text(l10n.offerSubtitle, style: textTheme.bodySmall),
                 ],
               ),
             ),
             const SizedBox(width: AppSpace.sm),
-            // Promo code pill
             Container(
               padding: const EdgeInsets.symmetric(
                 horizontal: AppSpace.md,
@@ -98,13 +75,11 @@ class OfferBanner extends StatelessWidget {
                   end: Alignment.bottomRight,
                   colors: [
                     accent.withValues(alpha: 0.16),
-                    accent.withValues(alpha: 0.08),
+                    accent.withValues(alpha: 0.06),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(AppRadius.md),
-                border: Border.all(
-                  color: accent.withValues(alpha: 0.40),
-                ),
+                border: Border.all(color: accent.withValues(alpha: 0.35)),
               ),
               child: Text(
                 'FIRST20',

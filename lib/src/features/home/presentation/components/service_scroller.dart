@@ -33,7 +33,6 @@ class ServiceScroller extends ConsumerWidget {
             return SizedBox(
               width: 160,
               child: SoftCard(
-                radius: AppRadius.xl,
                 onTap: () {
                   ref
                       .read(bookingDraftProvider.notifier)

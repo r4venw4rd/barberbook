@@ -1,12 +1,13 @@
 import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart';
+import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment_status.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/barber.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/time_slot.dart';
-import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
 import 'package:hair_dryer_app/src/features/appointments/infrastructure/repositories/appointment_repository.dart';
 
 final appointmentRepositoryProvider = Provider<AppointmentRepository>((ref) {
@@ -35,10 +36,7 @@ final barbersProvider = FutureProvider<List<Barber>>((ref) {
 });
 
 final ProviderFamily<List<TimeSlot>, DateTime> dateSlotsProvider =
-    Provider.family<List<TimeSlot>, DateTime>((
-      ref,
-      date,
-    ) {
+    Provider.family<List<TimeSlot>, DateTime>((ref, date) {
       final repo = ref.watch(appointmentRepositoryProvider);
       final result = repo.getSlotsForDate(date);
       return result.fold((failure) => <TimeSlot>[], (slots) => slots);
