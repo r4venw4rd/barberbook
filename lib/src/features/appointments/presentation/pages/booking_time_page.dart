@@ -7,6 +7,7 @@ import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/bottom_action_bar.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/flow_header.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/service_summary_bar.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/core/utils/formatters.dart';
@@ -181,7 +182,7 @@ class TimePickerPage extends HookConsumerWidget {
         child: SizedBox(
           width: double.infinity,
           height: kTouchTarget + 4,
-          child: FilledButton(
+          child: PrimaryButton(
             onPressed: draft.hasTime
                 ? () => unawaited(context.push('/book/review'))
                 : null,

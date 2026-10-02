@@ -5,6 +5,7 @@ import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/bottom_action_bar.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/flow_header.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/service_summary_bar.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/core/utils/formatters.dart';
@@ -116,7 +117,7 @@ class ReviewPage extends HookConsumerWidget {
         child: SizedBox(
           width: double.infinity,
           height: kTouchTarget + 4,
-          child: FilledButton(
+          child: PrimaryButton(
             onPressed: isSubmitting.value ? null : confirm,
             child: isSubmitting.value
                 ? const SizedBox(
@@ -151,7 +152,7 @@ class _IncompleteBookingView extends StatelessWidget {
               const SizedBox(height: AppSpace.md),
               Text(l10n.incompleteBooking),
               const SizedBox(height: AppSpace.xl),
-              FilledButton(
+              PrimaryButton(
                 onPressed: onStartOver,
                 child: Text(l10n.startOver),
               ),

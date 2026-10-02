@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
 import 'package:hair_dryer_app/src/features/auth/presentation/components/auth_error_text.dart';
@@ -78,7 +79,7 @@ class SignUpForm extends HookConsumerWidget {
           AuthErrorText(message: message),
         ],
         const SizedBox(height: AppSpace.lg),
-        FilledButton(
+        PrimaryButton(
           onPressed: isSubmitting.value ? null : submit,
           child: isSubmitting.value
               ? const SizedBox(

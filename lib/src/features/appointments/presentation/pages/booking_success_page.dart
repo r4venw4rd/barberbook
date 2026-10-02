@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/features/appointments/application/notifiers/appointments_notifier.dart';
 import 'package:hair_dryer_app/src/features/appointments/presentation/components/ticket_card.dart';
@@ -38,7 +39,7 @@ class BookingSuccessPage extends HookConsumerWidget {
       return Scaffold(
         body: SafeArea(
           child: Center(
-            child: FilledButton(
+            child: PrimaryButton(
               onPressed: () => context.go('/home'),
               child: Text(l10n.backToHome),
             ),
@@ -101,7 +102,7 @@ class BookingSuccessPage extends HookConsumerWidget {
                 SizedBox(
                   width: double.infinity,
                   height: kTouchTarget + 4,
-                  child: FilledButton(
+                  child: PrimaryButton(
                     onPressed: () => context.go('/appointments'),
                     child: Text(l10n.viewMyAppointments),
                   ),

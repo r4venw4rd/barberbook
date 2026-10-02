@@ -5,6 +5,7 @@ import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/bottom_action_bar.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/frosted_app_bar.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
 import 'package:hair_dryer_app/src/features/profile/presentation/components/avatar_edit_card.dart';
@@ -94,7 +95,7 @@ class EditProfilePage extends HookConsumerWidget {
         child: SizedBox(
           width: double.infinity,
           height: kTouchTarget + 4,
-          child: FilledButton(
+          child: PrimaryButton(
             onPressed: isSaving.value ? null : save,
             child: isSaving.value
                 ? const SizedBox(
