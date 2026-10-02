@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
+import 'package:hair_dryer_app/src/core/theme/app_gradients.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 void _noop() {}
@@ -33,7 +34,7 @@ void main() {
     );
 
     final decoration = fillOf(tester);
-    expect(decoration.gradient, AppColors.primaryGradient);
+    expect(decoration.gradient, AppGradients.primaryGradient);
     expect(decoration.boxShadow!.single.color, AppColors.shadowPrimary);
     expect(decoration.borderRadius, BorderRadius.circular(AppRadius.lg));
   });
@@ -48,7 +49,7 @@ void main() {
     );
 
     final decoration = fillOf(tester);
-    expect(decoration.gradient, AppColors.darkPrimaryGradient);
+    expect(decoration.gradient, AppGradients.darkPrimaryGradient);
     expect(decoration.boxShadow!.single.color, AppColors.darkShadowPrimary);
   });
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
+import 'package:hair_dryer_app/src/core/theme/app_gradients.dart';
 
 /// Palette helpers that resolve light/dark design tokens from a context.
 extension ThemeExtras on BuildContext {
@@ -35,16 +36,16 @@ extension ThemeExtras on BuildContext {
   Color get accentTint => accentStrong.withValues(alpha: isDarkTheme ? 0.12 : 0.08);
   Color get goldGlow => accentStrong.withValues(alpha: isDarkTheme ? 0.18 : 0.10);
   LinearGradient get primaryGradient =>
-      isDarkTheme ? AppColors.darkPrimaryGradient : AppColors.primaryGradient;
+      isDarkTheme ? AppGradients.darkPrimaryGradient : AppGradients.primaryGradient;
   Color get primaryShadow =>
       isDarkTheme ? AppColors.darkShadowPrimary : AppColors.shadowPrimary;
   LinearGradient get heroGradient =>
-      isDarkTheme ? AppColors.heroGradient : AppColors.lightHeroGradient;
+      isDarkTheme ? AppGradients.heroGradient : AppGradients.lightHeroGradient;
   LinearGradient get offerGradient =>
-      isDarkTheme ? AppColors.darkOfferGradient : AppColors.lightOfferGradient;
+      isDarkTheme ? AppGradients.darkOfferGradient : AppGradients.lightOfferGradient;
   LinearGradient get summaryGradient => isDarkTheme
-      ? AppColors.darkSummaryGradient
-      : AppColors.lightSummaryGradient;
+      ? AppGradients.darkSummaryGradient
+      : AppGradients.lightSummaryGradient;
 
   /// Surfaces for booking slots, tickets, and shimmer placeholders.
   Color get slotSurface => isDarkTheme ? AppColors.slotDark : AppColors.slotLight;

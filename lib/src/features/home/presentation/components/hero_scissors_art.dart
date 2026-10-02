@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
+import 'package:hair_dryer_app/src/core/theme/app_gradients.dart';
 import 'package:hair_dryer_app/src/features/home/presentation/components/snipping_scissors.dart';
 
 /// Decorative scissor artwork and shimmer overlay for the hero card.
@@ -22,7 +23,7 @@ class HeroScissorsArt extends StatelessWidget {
             const Positioned.fill(
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  gradient: AppColors.goldShimmerGradient,
+                  gradient: AppGradients.goldShimmerGradient,
                 ),
               ),
             ),
