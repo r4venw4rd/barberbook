@@ -10,17 +10,17 @@ import 'package:flutter/material.dart';
 abstract final class AppColors {
   // Brand / Accents (Champagne Gold & Cognac Amber)
 
-  /// Warm Champagne Gold brand colour (Light: `#C78B2A`, Dark: `#E5A93C`).
+  /// Warm Champagne Gold brand colour in light mode.
   static const primary = Color(0xFFC78B2A);
 
-  /// Solid deep gold / cognac for strong fills and accents.
+  /// Solid deep amber gold for strong fills and accents.
   static const primaryStrong = Color(0xFFA66E19);
 
   /// Pressed state of [primary].
-  static const primaryPressed = Color(0xFF8C5C13);
+  static const primaryPressed = Color(0xFF8F580E);
 
-  /// Secondary gold highlight colour.
-  static const secondary = Color(0xFFE5A93C);
+  /// Secondary champagne gold highlight colour.
+  static const secondary = Color(0xFFD4952B);
 
   /// Split-complementary positive/verified colour (Emerald 500).
   static const accent = Color(0xFF10B981);
@@ -34,7 +34,7 @@ abstract final class AppColors {
   static const card = Color(0xFFFFFFFF);
 
   /// Muted panel background in light mode (Soft Warm Slate).
-  static const muted = Color(0xFFF0F1F3);
+  static const muted = Color(0xFFF0F1F4);
 
   /// Hairline border in light mode (Fine Platinum).
   static const border = Color(0xFFE2E4E8);
@@ -44,8 +44,8 @@ abstract final class AppColors {
   /// Primary text colour in light mode (Rich Obsidian).
   static const foreground = Color(0xFF0F1117);
 
-  /// Secondary text colour in light mode (Warm Slate).
-  static const mutedForeground = Color(0xFF6B7280);
+  /// Secondary text colour in light mode (Warm Slate, WCAG 4.5:1+ compliant).
+  static const mutedForeground = Color(0xFF64748B);
 
   /// Text/icon colour drawn on top of [primary].
   static const onPrimary = Color(0xFFFFFFFF);
@@ -148,6 +148,26 @@ abstract final class AppColors {
   /// Unselected time-slot chip fill in light mode.
   static const slotLight = Color(0xFFF0F1F3);
 
+  /// Slot unavailable fill in dark mode.
+  static const darkSlotUnavailable = Color(0xFF161F33);
+
+  /// Slot unavailable fill in light mode.
+  static const lightSlotUnavailable = Color(0xFFF1F5F9);
+
+  /// Ticket card coupon background in dark mode.
+  static const darkTicketCoupon = Color(0xFF1E293B);
+
+  /// Ticket card coupon background in light mode.
+  static const lightTicketCoupon = Color(0xFFEFF6FF);
+
+  /// Shimmer base and highlight in light mode.
+  static const lightShimmerBase = Color(0xFFE8EAEF);
+  static const lightShimmerHighlight = Color(0xFFF6F7F9);
+
+  /// Shimmer base and highlight in dark mode.
+  static const darkShimmerBase = Color(0xFF191C23);
+  static const darkShimmerHighlight = Color(0xFF282C38);
+
   /// Muted outline.
   static const outlineMuted = Color(0xFF374151);
 
@@ -162,17 +182,24 @@ abstract final class AppColors {
   /// Shadow colour of bottom action bars.
   static const shadowBar = Color(0x0E000000);
 
-  /// Coloured glow under primary buttons (light — [primary] at 40%).
-  static const shadowPrimary = Color(0x66C78B2A);
+  /// Coloured glow under primary buttons (light — warm amber gold).
+  static const shadowPrimary = Color(0x38C78B2A);
 
-  /// Coloured glow under primary buttons (dark — [darkPrimary] at 35%).
-  static const darkShadowPrimary = Color(0x59E5A93C);
+  /// Coloured glow under primary buttons (dark — warm deep amber).
+  static const darkShadowPrimary = Color(0x388C5C13);
 
   /// Gold glow used for selected states and premium highlights.
   static const goldGlow = Color(0x26C78B2A);
 
   /// Gold shimmer overlay drawn on hero surfaces.
   static const goldShimmer = Color(0x0CE5A93C);
+
+  /// Hero gradient in light mode: elegant warm champagne porcelain.
+  static const lightHeroGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0xFFFFFBF5), Color(0xFFFAF4EA), Color(0xFFF4ECE0)],
+  );
 
   /// Hero gradient: Cinematic Obsidian with subtle warm undertone.
   static const heroGradient = LinearGradient(
@@ -195,18 +222,46 @@ abstract final class AppColors {
     stops: [0.0, 0.45, 1.0],
   );
 
-  /// Primary button fill — [primary] sinking into [primaryStrong].
+  /// Primary button fill in light mode — luminous warm gold.
   static const primaryGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [primary, primaryStrong],
+    colors: [Color(0xFFD4952B), Color(0xFFB57518)],
   );
 
-  /// Primary button fill in dark mode — [darkSecondary] over [darkPrimary].
+  /// Primary button fill in dark mode — deep cognac amber gold.
   static const darkPrimaryGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [darkSecondary, darkPrimary],
+    colors: [Color(0xFFB8781E), Color(0xFF754508)],
+  );
+
+  /// Offer banner gradient in light mode — soft champagne porcelain.
+  static const lightOfferGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0xFFFAF7F2), Color(0xFFF4EDE2)],
+  );
+
+  /// Offer banner gradient in dark mode.
+  static const darkOfferGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [darkCardElevated, darkCard],
+  );
+
+  /// Service summary bar gradient in light mode.
+  static const lightSummaryGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0xFFFAF6EE), Color(0xFFF3ECE0)],
+  );
+
+  /// Service summary bar gradient in dark mode.
+  static const darkSummaryGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0x38B8781E), Color(0x1F754508)],
   );
 
   /// Glossy sheen over the top half of primary buttons ([onPrimary]
