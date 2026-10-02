@@ -15,8 +15,7 @@ import 'package:hair_dryer_app/src/features/appointments/application/notifiers/a
 import 'package:hair_dryer_app/src/features/appointments/application/notifiers/booking_draft_notifier.dart';
 import 'package:hair_dryer_app/src/features/appointments/presentation/components/date_strip.dart';
 import 'package:hair_dryer_app/src/features/appointments/presentation/components/legend_dot.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/notice_line.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/slot_section.dart';
+import 'package:hair_dryer_app/src/features/appointments/presentation/components/time_slot_sections.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TimePickerPage extends HookConsumerWidget {
@@ -60,19 +59,6 @@ class TimePickerPage extends HookConsumerWidget {
       }
       return null;
     }, const []);
-
-    final morning = [
-      for (final s in slots)
-        if (s.hour < 12) s,
-    ];
-    final afternoon = [
-      for (final s in slots)
-        if (s.hour >= 12 && s.hour < 17) s,
-    ];
-    final evening = [
-      for (final s in slots)
-        if (s.hour >= 17) s,
-    ];
 
     final timeFormatted = draft.hasTime
         ? '${draft.hour!.toString().padLeft(2, '0')}:'
@@ -131,51 +117,19 @@ class TimePickerPage extends HookConsumerWidget {
               ),
               const SizedBox(height: AppSpace.md),
               Expanded(
-                child: ListView(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpace.lg,
-                    AppSpace.sm,
-                    AppSpace.lg,
-                    AppSpace.xxl,
-                  ),
-                  children: [
-                    if (slots.every((s) => s.unavailable))
-                      NoticeLine(
-                        text: selectedDate.value.day == DateTime.now().day
-                            ? l10n.noTimesLeftToday
-                            : l10n.fullyBooked,
-                      ),
-                    SlotSection(
-                      title: l10n.morningSlots,
-                      icon: Icons.wb_twilight,
-                      slots: morning,
-                      selectedHour: draft.hour,
-                      selectedMinute: draft.minute,
-                      onSelect: (h, m) => ref
-                          .read(bookingDraftProvider.notifier)
-                          .selectTime(h, m),
-                    ),
-                    SlotSection(
-                      title: l10n.afternoonSlots,
-                      icon: Icons.wb_sunny_outlined,
-                      slots: afternoon,
-                      selectedHour: draft.hour,
-                      selectedMinute: draft.minute,
-                      onSelect: (h, m) => ref
-                          .read(bookingDraftProvider.notifier)
-                          .selectTime(h, m),
-                    ),
-                    SlotSection(
-                      title: l10n.eveningSlots,
-                      icon: Icons.nights_stay_outlined,
-                      slots: evening,
-                      selectedHour: draft.hour,
-                      selectedMinute: draft.minute,
-                      onSelect: (h, m) => ref
-                          .read(bookingDraftProvider.notifier)
-                          .selectTime(h, m),
-                    ),
-                  ],
+                child: TimeSlotSections(
+                  slots: slots,
+                  selectedDate: selectedDate.value,
+                  selectedHour: draft.hour,
+                  selectedMinute: draft.minute,
+                  morningLabel: l10n.morningSlots,
+                  afternoonLabel: l10n.afternoonSlots,
+                  eveningLabel: l10n.eveningSlots,
+                  emptyTodayLabel: l10n.noTimesLeftToday,
+                  fullyBookedLabel: l10n.fullyBooked,
+                  onSelect: (hour, minute) => ref
+                      .read(bookingDraftProvider.notifier)
+                      .selectTime(hour, minute),
                 ),
               ),
             ],
