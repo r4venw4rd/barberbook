@@ -23,7 +23,7 @@ class AuthNotifier extends AsyncNotifier<User?> {
   @override
   FutureOr<User?> build() async {
     final result = await ref.watch(authRepositoryProvider).getCurrentUser();
-    return result.fold((_) => null, (user) => user);
+    return result.fold<User?>((_) => null, (user) => user);
   }
 
   /// Creates an account, signs in and stores the session.
@@ -80,7 +80,7 @@ class AuthNotifier extends AsyncNotifier<User?> {
     final result = await ref
         .read(authRepositoryProvider)
         .updateProfile(updated);
-    return result.fold(
+    return result.fold<bool>(
       (failure) => false,
       (user) {
         state = AsyncValue.data(user);

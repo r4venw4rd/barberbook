@@ -7,7 +7,7 @@ import 'package:hair_dryer_app/src/core/database/app_database.dart';
 class AuthLocalService {
   /// Creates the auth service. Without a [database] an in-memory store is
   /// used, which keeps widget tests and tooling working.
-  AuthLocalService([AppDatabase? database]) : _database = database;
+  new([AppDatabase? database]) : _database = database;
 
   final AppDatabase? _database;
 
@@ -35,7 +35,7 @@ class AuthLocalService {
         ? _memoryEmailIndex[key]
         : database.emailIndex.get(key);
     if (userId == null) return null;
-    return fetchUser(userId);
+    return await fetchUser(userId);
   }
 
   /// Inserts or replaces a user record and keeps the email index in sync.

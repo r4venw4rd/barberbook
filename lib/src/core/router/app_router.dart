@@ -8,6 +8,7 @@ import 'package:hair_dryer_app/src/features/appointments/presentation/pages/book
 import 'package:hair_dryer_app/src/features/appointments/presentation/pages/booking_service_page.dart';
 import 'package:hair_dryer_app/src/features/appointments/presentation/pages/booking_success_page.dart';
 import 'package:hair_dryer_app/src/features/appointments/presentation/pages/booking_time_page.dart';
+import 'package:hair_dryer_app/src/features/auth/presentation/pages/auth_page.dart';
 import 'package:hair_dryer_app/src/features/home/presentation/pages/home_page.dart';
 import 'package:hair_dryer_app/src/features/onboarding/presentation/pages/splash_page.dart';
 import 'package:hair_dryer_app/src/features/onboarding/presentation/pages/welcome_tutorial_page.dart';
@@ -70,6 +71,13 @@ GoRouter createAppRouter() => GoRouter(
       pageBuilder: (context, state) => _fadePage(
         key: state.pageKey,
         child: const WelcomeTutorialPage(),
+      ),
+    ),
+    GoRoute(
+      path: '/auth',
+      pageBuilder: (context, state) => _fadePage(
+        key: state.pageKey,
+        child: const AuthPage(),
       ),
     ),
     StatefulShellRoute.indexedStack(

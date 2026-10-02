@@ -10,7 +10,7 @@ import 'package:hair_dryer_app/src/features/auth/infrastructure/services/passwor
 
 /// Repository enforcing authentication rules over the local credential store.
 class AuthRepository {
-  /// Creates the repository around [service] and a password [hasher].
+  /// Creates the repository around the local service and password hasher.
   const new(this._service, [this._hasher = const PasswordHasher()]);
 
   final AuthLocalService _service;
@@ -19,8 +19,8 @@ class AuthRepository {
   static final Random _secureRandom = Random.secure();
   static const Duration _sessionTtl = Duration(days: 30);
   static final RegExp _emailPattern = RegExp(r'^[\w.+-]+@[\w-]+\.[\w.-]+$');
-  static final RegExp _letterPattern = RegExp(r'[A-Za-z]');
-  static final RegExp _digitPattern = RegExp(r'[0-9]');
+  static final RegExp _letterPattern = RegExp('[A-Za-z]');
+  static final RegExp _digitPattern = RegExp('[0-9]');
 
   /// Restores the active session, clearing it when it cannot be trusted.
   Future<Either<AuthFailure, User?>> getCurrentUser() async {

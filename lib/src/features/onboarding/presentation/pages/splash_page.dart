@@ -51,32 +51,24 @@ class _SplashPageState extends ConsumerState<SplashPage>
     _navigationTimer = Timer(const Duration(milliseconds: 1700), _navigateNext);
   }
 
-  void _navigateNext() {
+  Future<void> _navigateNext() async {
     if (!mounted) return;
     final hasSeenOnboarding = ref.read(onboardingCompletedProvider);
-    final authAsync = ref.read(authNotifierProvider);
-    
+
     // If onboarding not seen, show welcome tutorial
     if (!hasSeenOnboarding) {
       context.go('/welcome');
       return;
     }
-    
-    // Check if user is authenticated (has user data)
-    final isAuthenticated = authAsync.maybeWhen(
-      data: (user) => user != null,
-      orElse: () => false,
-    );
-    
-    // If onboarding seen but not authenticated, redirect to welcome
-    // This prevents logged-out users from accessing restricted pages
-    if (!isAuthenticated) {
-      context.go('/welcome');
-      return;
-    }
-    
-    // Both onboarding done and authenticated: go to home
-    context.go('/home');
+
+    // Resolve the stored session before choosing the destination
+    final user = await ref
+        .read(authNotifierProvider.future)
+        .catchError((Object _) => null);
+    if (!mounted) return;
+
+    // Signed out users must authenticate before accessing the app
+    context.go(user == null ? '/auth' : '/home');
   }
 
   @override
