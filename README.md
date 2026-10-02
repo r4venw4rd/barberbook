@@ -12,15 +12,15 @@ review → confirm, plus appointments management and profile settings.
 
 | | | | |
 |:-:|:-:|:-:|:-:|
-| ![Home](screenshots/dark/home.png) | ![Service](screenshots/dark/service.png) | ![Barber](screenshots/dark/barber.png) | ![Time](screenshots/dark/time.png) |
-| ![Review](screenshots/dark/review.png) | ![Success](screenshots/dark/success.png) | ![Appointments](screenshots/dark/appointments.png) | ![Profile](screenshots/dark/profile.png) |
+| <img src="screenshots/dark/home.png" width="160" alt="Home" /> | <img src="screenshots/dark/service.png" width="160" alt="Service" /> | <img src="screenshots/dark/barber.png" width="160" alt="Barber" /> | <img src="screenshots/dark/time.png" width="160" alt="Time" /> |
+| <img src="screenshots/dark/review.png" width="160" alt="Review" /> | <img src="screenshots/dark/success.png" width="160" alt="Success" /> | <img src="screenshots/dark/appointments.png" width="160" alt="Appointments" /> | <img src="screenshots/dark/profile.png" width="160" alt="Profile" /> |
 
 ### Light Theme
 
 | | | | |
 |:-:|:-:|:-:|:-:|
-| ![Home](screenshots/light/home.png) | ![Service](screenshots/light/service.png) | ![Barber](screenshots/light/barber.png) | ![Time](screenshots/light/time.png) |
-| ![Review](screenshots/light/review.png) | ![Success](screenshots/light/success.png) | ![Appointments](screenshots/light/appointments.png) | ![Profile](screenshots/light/profile.png) |
+| <img src="screenshots/light/home.png" width="160" alt="Home" /> | <img src="screenshots/light/service.png" width="160" alt="Service" /> | <img src="screenshots/light/barber.png" width="160" alt="Barber" /> | <img src="screenshots/light/time.png" width="160" alt="Time" /> |
+| <img src="screenshots/light/review.png" width="160" alt="Review" /> | <img src="screenshots/light/success.png" width="160" alt="Success" /> | <img src="screenshots/light/appointments.png" width="160" alt="Appointments" /> | <img src="screenshots/light/profile.png" width="160" alt="Profile" /> |
 
 ## Features
 
