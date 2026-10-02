@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// A lightweight, premium shimmering container that creates a smooth sweep
@@ -36,14 +35,8 @@ class _AppShimmerState extends State<AppShimmer>
   @override
   Widget build(BuildContext context) {
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
-    final isDark = context.isDarkTheme;
-
-    final baseColor = isDark
-        ? AppColors.darkCardElevated
-        : const Color(0xFFE8EAEF);
-    final highlightColor = isDark
-        ? const Color(0xFF282C38)
-        : const Color(0xFFF6F7F9);
+    final baseColor = context.shimmerBase;
+    final highlightColor = context.shimmerHighlight;
 
     if (reduceMotion) {
       return _ShimmerScope(
@@ -109,12 +102,8 @@ class ShimmerBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scope = _ShimmerScope.of(context);
-    final isDark = context.isDarkTheme;
-
-    final baseColor = scope?.baseColor ??
-        (isDark ? AppColors.darkCardElevated : const Color(0xFFE8EAEF));
-    final highlightColor = scope?.highlightColor ??
-        (isDark ? const Color(0xFF282C38) : const Color(0xFFF6F7F9));
+    final baseColor = scope?.baseColor ?? context.shimmerBase;
+    final highlightColor = scope?.highlightColor ?? context.shimmerHighlight;
     final progress = scope?.progress ?? 0.0;
 
     return Container(
@@ -128,11 +117,7 @@ class ShimmerBox extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment(-2.0 + (4.0 * progress), 0),
           end: Alignment(-0.5 + (4.0 * progress), 0),
-          colors: [
-            baseColor,
-            highlightColor,
-            baseColor,
-          ],
+          colors: [baseColor, highlightColor, baseColor],
           stops: const [0.0, 0.5, 1.0],
         ),
       ),
@@ -164,11 +149,7 @@ class ServiceScrollerSkeleton extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ShimmerBox(
-                    width: 46,
-                    height: 46,
-                    radius: AppRadius.md + 2,
-                  ),
+                  ShimmerBox(width: 46, height: 46, radius: AppRadius.md + 2),
                   Spacer(),
                   ShimmerBox(width: 100, height: 16),
                   SizedBox(height: 6),
@@ -250,10 +231,7 @@ class BookingServiceSkeleton extends StatelessWidget {
           radius: AppRadius.lg,
           child: Row(
             children: [
-              ShimmerBox(
-                width: 44,
-                height: 44,
-              ),
+              ShimmerBox(width: 44, height: 44),
               SizedBox(width: AppSpace.md),
               Expanded(
                 child: Column(
@@ -293,11 +271,7 @@ class BookingBarberSkeleton extends StatelessWidget {
           radius: AppRadius.lg,
           child: Row(
             children: [
-              ShimmerBox(
-                width: 52,
-                height: 52,
-                shape: BoxShape.circle,
-              ),
+              ShimmerBox(width: 52, height: 52, shape: BoxShape.circle),
               SizedBox(width: AppSpace.md),
               Expanded(
                 child: Column(
