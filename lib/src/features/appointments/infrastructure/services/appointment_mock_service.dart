@@ -1,3 +1,5 @@
+import 'package:hair_dryer_app/src/features/appointments/infrastructure/services/appointment_seed_maps.dart';
+
 class AppointmentMockService {
   Future<List<Map<String, dynamic>>> fetchServices() async {
     // Raw mock data returning JSON-like maps
@@ -121,95 +123,6 @@ class AppointmentMockService {
     ];
   }
 
-  Future<List<Map<String, dynamic>>> fetchSeedAppointments() async {
-    final now = DateTime.now();
-    final upcoming = DateTime(now.year, now.month, now.day + 2, 14, 30);
-    final past = DateTime(now.year, now.month, now.day - 6, 11);
-    return [
-      {
-        'id': 'apt-1',
-        'service': {
-          'id': 'skin-fade',
-          'name': 'Skin Fade',
-          'description': 'Zero fade with razor detailing and styling',
-          'price': 34.0,
-          'durationMinutes': 45,
-          'iconCodePoint': 0xe0e7,
-          'category': 'haircut',
-        },
-        'barber': {
-          'id': 'marcus',
-          'name': 'Marcus Reed',
-          'specialty': 'Master barber · classic cuts',
-          'yearsExperience': 12,
-          'rating': 4.9,
-          'reviewCount': 328,
-          'initials': 'MR',
-          'accentColorValue': 0xFFE5A93C,
-          'isAvailableToday': true,
-          'avatarUrl': 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
-        },
-        'startIso': upcoming.toIso8601String(),
-        'notes': 'Same length on top as last time',
-        'status': 'confirmed',
-        'price': 34.0,
-      },
-      {
-        'id': 'apt-2',
-        'service': {
-          'id': 'hot-towel-shave',
-          'name': 'Hot Towel Shave',
-          'description': 'Classic straight razor shave with hot towels',
-          'price': 26.0,
-          'durationMinutes': 30,
-          'iconCodePoint': 0xeb48,
-          'category': 'shave',
-        },
-        'barber': {
-          'id': 'liam',
-          'name': "Liam O'Connor",
-          'specialty': 'Beard sculpting · wet shaves',
-          'yearsExperience': 6,
-          'rating': 4.9,
-          'reviewCount': 176,
-          'initials': 'LO',
-          'accentColorValue': 0xFF047857,
-          'isAvailableToday': true,
-          'avatarUrl': 'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=300&auto=format&fit=crop&q=80',
-        },
-        'startIso': past.toIso8601String(),
-        'notes': '',
-        'status': 'completed',
-        'price': 26.0,
-      },
-      {
-        'id': 'apt-3',
-        'service': {
-          'id': 'beard-trim',
-          'name': 'Beard Trim',
-          'description': 'Shape, line-up and beard oil treatment',
-          'price': 18.0,
-          'durationMinutes': 20,
-          'iconCodePoint': 0xe253,
-          'category': 'beard',
-        },
-        'barber': {
-          'id': 'diego',
-          'name': 'Diego Santos',
-          'specialty': 'Fade specialist · designs',
-          'yearsExperience': 8,
-          'rating': 4.8,
-          'reviewCount': 214,
-          'initials': 'DS',
-          'accentColorValue': 0xFF0891B2,
-          'isAvailableToday': true,
-          'avatarUrl': 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
-        },
-        'startIso': past.add(const Duration(days: -21)).toIso8601String(),
-        'notes': '',
-        'status': 'completed',
-        'price': 18.0,
-      },
-    ];
-  }
+  Future<List<Map<String, dynamic>>> fetchSeedAppointments() async =>
+      buildSeedAppointmentMaps(DateTime.now());
 }
