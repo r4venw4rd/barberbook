@@ -19,18 +19,12 @@ class StatusChip extends StatelessWidget {
         l10n.statusConfirmed,
         context.successText,
       ),
-      AppointmentStatus.pending => (
-        l10n.statusPending,
-        context.warningText,
-      ),
+      AppointmentStatus.pending => (l10n.statusPending, context.warningText),
       AppointmentStatus.completed => (
         l10n.statusCompleted,
         Theme.of(context).colorScheme.onSurfaceVariant,
       ),
-      AppointmentStatus.cancelled => (
-        l10n.statusCancelled,
-        context.dangerText,
-      ),
+      AppointmentStatus.cancelled => (l10n.statusCancelled, context.dangerText),
     };
 
     return Container(
@@ -49,10 +43,7 @@ class StatusChip extends StatelessWidget {
           Container(
             width: 7,
             height: 7,
-            decoration: BoxDecoration(
-              color: dotColor,
-              shape: BoxShape.circle,
-            ),
+            decoration: BoxDecoration(color: dotColor, shape: BoxShape.circle),
           ),
           const SizedBox(width: 6),
           Text(
