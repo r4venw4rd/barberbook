@@ -7,10 +7,7 @@ import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 /// Light mode: near-invisible warm-grey diagonal lines
 /// Dark mode: faint gold-tinted dots/lines for a luxury texture
 class _BackgroundPatternPainter extends CustomPainter {
-  const _BackgroundPatternPainter({
-    required this.isDark,
-    required this.color,
-  });
+  const new({required this.isDark, required this.color});
 
   final bool isDark;
   final Color color;

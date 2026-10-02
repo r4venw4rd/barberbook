@@ -85,10 +85,7 @@ class AppAvatar extends StatelessWidget {
             decoration: BoxDecoration(
               color: badgeColor ?? context.successText,
               shape: BoxShape.circle,
-              border: Border.all(
-                color: context.cardSurface,
-                width: 2,
-              ),
+              border: Border.all(color: context.cardSurface, width: 2),
             ),
           ),
         ),

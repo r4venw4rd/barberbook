@@ -39,10 +39,7 @@ class SectionHeader extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
-                  accent,
-                  accent.withValues(alpha: 0.5),
-                ],
+                colors: [accent, accent.withValues(alpha: 0.5)],
               ),
               borderRadius: BorderRadius.circular(AppRadius.pill),
             ),
@@ -51,9 +48,7 @@ class SectionHeader extends StatelessWidget {
           Expanded(
             child: Text(
               title,
-              style: textTheme.titleLarge?.copyWith(
-                letterSpacing: -0.3,
-              ),
+              style: textTheme.titleLarge?.copyWith(letterSpacing: -0.3),
             ),
           ),
           if (actionLabel != null)
