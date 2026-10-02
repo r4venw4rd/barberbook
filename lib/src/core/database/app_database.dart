@@ -13,13 +13,13 @@ class AppDatabase {
   });
 
   /// User records keyed by user id.
-  final Box<Map> users;
+  final Box<Map<dynamic, dynamic>> users;
 
   /// Normalized email to user id lookup used for sign in and uniqueness.
   final Box<String> emailIndex;
 
   /// The single active session record stored under [sessionKey].
-  final Box<Map> session;
+  final Box<Map<dynamic, dynamic>> session;
 
   static const String _usersBoxName = 'bb_auth_users_v1';
   static const String _emailIndexBoxName = 'bb_auth_email_index_v1';
@@ -41,9 +41,9 @@ class AppDatabase {
   }
 
   static Future<AppDatabase> _openBoxes() async {
-    final users = await Hive.openBox<Map>(_usersBoxName);
+    final users = await Hive.openBox<Map<dynamic, dynamic>>(_usersBoxName);
     final emailIndex = await Hive.openBox<String>(_emailIndexBoxName);
-    final session = await Hive.openBox<Map>(_sessionBoxName);
+    final session = await Hive.openBox<Map<dynamic, dynamic>>(_sessionBoxName);
     return AppDatabase._(
       users: users,
       emailIndex: emailIndex,
