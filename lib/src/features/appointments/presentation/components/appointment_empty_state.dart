@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/bouncing_button.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 class AppointmentEmptyState extends StatelessWidget {
@@ -49,12 +49,9 @@ class AppointmentEmptyState extends StatelessWidget {
             ),
             if (upcoming) ...[
               const SizedBox(height: AppSpace.xl),
-              BouncingWrapper(
-                onTap: () => unawaited(context.push('/book/service')),
-                child: FilledButton(
-                  onPressed: () => unawaited(context.push('/book/service')),
-                  child: Text(l10n.bookAppointment),
-                ),
+              PrimaryButton(
+                onPressed: () => unawaited(context.push('/book/service')),
+                child: Text(l10n.bookAppointment),
               ),
             ],
           ],

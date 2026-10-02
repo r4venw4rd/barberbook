@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/bouncing_button.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/features/appointments/application/notifiers/appointments_notifier.dart';
@@ -133,26 +133,15 @@ class HomeHeroCard extends ConsumerWidget {
                 // CTA row
                 Row(
                   children: [
-                    BouncingWrapper(
-                      onTap: onBook,
-                      child: FilledButton(
-                        onPressed: onBook,
-                        style: FilledButton.styleFrom(
-                          backgroundColor: AppColors.darkPrimary,
-                          foregroundColor: AppColors.darkOnPrimary,
-                          minimumSize: const Size(0, 46),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: AppSpace.xl,
-                            vertical: AppSpace.md,
-                          ),
-                          textStyle: textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.w700,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppRadius.lg),
-                          ),
+                    PrimaryButton(
+                      onPressed: onBook,
+                      gradient: AppColors.darkPrimaryGradient,
+                      foregroundColor: AppColors.darkOnPrimary,
+                      child: Text(
+                        l10n.bookAppointment,
+                        style: textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
                         ),
-                        child: Text(l10n.bookAppointment),
                       ),
                     ),
                   ],

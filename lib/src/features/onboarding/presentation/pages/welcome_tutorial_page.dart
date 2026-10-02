@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/app_background_pattern.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
 import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/features/onboarding/application/notifiers/onboarding_notifier.dart';
@@ -337,19 +338,8 @@ class _WelcomeTutorialPageState extends ConsumerState<WelcomeTutorialPage> {
                     SizedBox(
                       width: double.infinity,
                       height: 52,
-                      child: FilledButton(
+                      child: PrimaryButton(
                         onPressed: _nextPage,
-                        style: FilledButton.styleFrom(
-                          backgroundColor: accent,
-                          foregroundColor: isDark
-                              ? AppColors.darkOnPrimary
-                              : AppColors.onPrimary,
-                          elevation: 6,
-                          shadowColor: accent.withValues(alpha: 0.35),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppRadius.lg),
-                          ),
-                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
