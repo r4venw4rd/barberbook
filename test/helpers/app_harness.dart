@@ -30,6 +30,31 @@ Future<void> seedSignedInSession(List<Override> overrides) async {
   expect(result.isRight(), isTrue);
 }
 
+/// Stores a password account without a session, for sign-in tests.
+Future<void> seedRegisteredAccount(List<Override> overrides) async {
+  final container = ProviderContainer(overrides: overrides);
+  addTearDown(container.dispose);
+  final repository = container.read(authRepositoryProvider);
+  final registered = await repository.register(
+    name: 'Ana Diaz',
+    email: 'ana@example.com',
+    password: 'Sunset!Barber9',
+  );
+  expect(registered.isRight(), isTrue);
+  final loggedOut = await repository.logout();
+  expect(loggedOut.isRight(), isTrue);
+}
+
+/// Lets pending async work and a route transition finish with bounded pumps.
+///
+/// Used instead of [WidgetTester.pumpAndSettle] whenever the destination can
+/// be home, whose scissors animation never settles.
+Future<void> pumpNavigation(WidgetTester tester) async {
+  await tester.pump();
+  await tester.pump();
+  await tester.pump(const Duration(milliseconds: 400));
+}
+
 /// Pumps the app and waits for the splash transition to land.
 ///
 /// Splash auto-navigates after 1700ms and home runs the scissors animation,
