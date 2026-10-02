@@ -1,13 +1,16 @@
 import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:hair_dryer_app/src/core/database/app_database.dart';
 import 'package:hair_dryer_app/src/features/auth/domain/entities/user.dart';
+import 'package:hair_dryer_app/src/features/auth/domain/failures/auth_failure.dart';
 import 'package:hair_dryer_app/src/features/auth/infrastructure/repositories/auth_repository.dart';
 import 'package:hair_dryer_app/src/features/auth/infrastructure/services/auth_local_service.dart';
 
 final authLocalServiceProvider = Provider<AuthLocalService>((ref) {
-  final storage = ref.watch(localStorageProvider);
-  return AuthLocalService(storage);
+  final database = ref.watch(appDatabaseProvider);
+  return AuthLocalService(database);
 });
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
@@ -15,56 +18,51 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepository(service);
 });
 
+/// Reactive holder of the signed-in user, backed by the local database.
 class AuthNotifier extends AsyncNotifier<User?> {
   @override
   FutureOr<User?> build() async {
-    final repo = ref.watch(authRepositoryProvider);
-    final result = await repo.getCurrentUser();
-    final user = result.fold(
-      (failure) => null,
-      (user) => user,
-    );
-    return user;
+    final result = await ref.watch(authRepositoryProvider).getCurrentUser();
+    return result.fold((_) => null, (user) => user);
   }
 
-  Future<bool> login({
-    required String email,
+  /// Creates an account, signs in and stores the session.
+  Future<bool> register({
     required String name,
+    required String email,
+    required String password,
     String? phone,
   }) async {
     state = const AsyncValue.loading();
-    final repo = ref.read(authRepositoryProvider);
-    final result = await repo.login(email: email, name: name, phone: phone);
-    final isSuccess = result.fold(
-      (failure) {
-        state = AsyncValue.error(failure, StackTrace.current);
-        return false;
-      },
-      (user) {
-        state = AsyncValue.data(user);
-        return true;
-      },
+    final result = await ref.read(authRepositoryProvider).register(
+      name: name,
+      email: email,
+      password: password,
+      phone: phone,
     );
-    return isSuccess;
+    return _publish(result);
   }
 
+  /// Verifies credentials and stores the session.
+  Future<bool> login({
+    required String email,
+    required String password,
+  }) async {
+    state = const AsyncValue.loading();
+    final result = await ref
+        .read(authRepositoryProvider)
+        .login(email: email, password: password);
+    return _publish(result);
+  }
+
+  /// Signs in with the throwaway guest profile.
   Future<bool> loginAsGuest() async {
     state = const AsyncValue.loading();
-    final repo = ref.read(authRepositoryProvider);
-    final result = await repo.loginAsGuest();
-    final isSuccess = result.fold(
-      (failure) {
-        state = AsyncValue.error(failure, StackTrace.current);
-        return false;
-      },
-      (guest) {
-        state = AsyncValue.data(guest);
-        return true;
-      },
-    );
-    return isSuccess;
+    final result = await ref.read(authRepositoryProvider).loginAsGuest();
+    return _publish(result);
   }
 
+  /// Updates profile details of the signed-in user.
   Future<bool> updateProfile({
     required String name,
     required String email,
@@ -79,22 +77,35 @@ class AuthNotifier extends AsyncNotifier<User?> {
       phone: phone.trim(),
     );
 
-    final repo = ref.read(authRepositoryProvider);
-    final result = await repo.updateProfile(updated);
-    final isSuccess = result.fold(
+    final result = await ref
+        .read(authRepositoryProvider)
+        .updateProfile(updated);
+    return result.fold(
       (failure) => false,
       (user) {
         state = AsyncValue.data(user);
         return true;
       },
     );
-    return isSuccess;
   }
 
+  /// Ends the session.
   Future<void> logout() async {
-    final repo = ref.read(authRepositoryProvider);
-    await repo.logout();
+    await ref.read(authRepositoryProvider).logout();
     state = const AsyncValue.data(null);
+  }
+
+  bool _publish(Either<AuthFailure, User> result) {
+    return result.fold(
+      (failure) {
+        state = AsyncValue.error(failure, StackTrace.current);
+        return false;
+      },
+      (user) {
+        state = AsyncValue.data(user);
+        return true;
+      },
+    );
   }
 }
 

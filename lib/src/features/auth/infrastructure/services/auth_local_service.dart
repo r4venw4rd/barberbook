@@ -1,58 +1,119 @@
-import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
+import 'package:hair_dryer_app/src/core/database/app_database.dart';
 
-/// Raw authentication I/O service interacting with local storage.
+/// Raw authentication I/O against the local database.
+///
+/// Only dumb reads and writes live here — exceptions propagate to the
+/// repository, which owns error detection.
 class AuthLocalService {
-  /// Creates the auth local service.
-  new([LocalStorageService? storage]) : _storage = storage;
+  /// Creates the auth service. Without a [database] an in-memory store is
+  /// used, which keeps widget tests and tooling working.
+  AuthLocalService([AppDatabase? database]) : _database = database;
 
-  final LocalStorageService? _storage;
-  Map<String, dynamic>? _memoryUser = defaultUser;
+  final AppDatabase? _database;
 
-  static const String _userKey = 'bb_current_user_v1';
-  static const String _authStatusKey = 'bb_auth_status_v1';
+  final Map<String, Map<String, dynamic>> _memoryUsers = {};
+  final Map<String, String> _memoryEmailIndex = {};
+  Map<String, dynamic>? _memorySession;
 
-  static const Map<String, dynamic> defaultUser = {
-    'id': 'usr-alex',
-    'name': 'Alex Johnson',
-    'email': 'alex.johnson@example.com',
-    'phone': '+1 555 0134',
-    'avatarUrl':
-        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=300&auto=format&fit=crop&q=80',
-    'isGuest': false,
-  };
+  /// Trims and lowercases [email] so it works as a stable index key.
+  static String normalizeEmail(String email) => email.trim().toLowerCase();
 
-  /// Fetches the stored user JSON map, or default user on first run.
-  Future<Map<String, dynamic>?> fetchCurrentUser() async {
-    final storage = _storage;
-    if (storage == null) return _memoryUser;
-
-    final stored = storage.getJson(_userKey);
-    if (stored != null) return stored;
-    final isInitialized = storage.getBool(_authStatusKey);
-    if (isInitialized == null) {
-      await storage.setJson(_userKey, defaultUser);
-      await storage.setBool(_authStatusKey, value: true);
-      return defaultUser;
-    }
-    return null;
+  /// Reads a user record by id.
+  Future<Map<String, dynamic>?> fetchUser(String userId) async {
+    final database = _database;
+    if (database == null) return _memoryUsers[userId];
+    final raw = database.users.get(userId);
+    if (raw == null) return null;
+    return Map<String, dynamic>.from(raw);
   }
 
-  /// Saves the user map to storage.
-  Future<void> saveUser(Map<String, dynamic> userMap) async {
-    _memoryUser = userMap;
-    final storage = _storage;
-    if (storage != null) {
-      await storage.setJson(_userKey, userMap);
-      await storage.setBool(_authStatusKey, value: true);
-    }
+  /// Reads a user record by email, or null when nobody signed up with it.
+  Future<Map<String, dynamic>?> fetchUserByEmail(String email) async {
+    final key = normalizeEmail(email);
+    final database = _database;
+    final userId = database == null
+        ? _memoryEmailIndex[key]
+        : database.emailIndex.get(key);
+    if (userId == null) return null;
+    return fetchUser(userId);
   }
 
-  /// Clears user from storage.
-  Future<void> deleteUser() async {
-    _memoryUser = null;
-    final storage = _storage;
-    if (storage != null) {
-      await storage.remove(_userKey);
+  /// Inserts or replaces a user record and keeps the email index in sync.
+  Future<void> saveUser(Map<String, dynamic> record) async {
+    final userId = _requireString(record, 'id');
+    final email = normalizeEmail(_requireString(record, 'email'));
+    final database = _database;
+    if (database == null) {
+      final previous = _memoryUsers[userId];
+      if (previous != null) {
+        final previousEmail = normalizeEmail('${previous['email']}');
+        if (previousEmail != email) _memoryEmailIndex.remove(previousEmail);
+      }
+      _memoryUsers[userId] = record;
+      _memoryEmailIndex[email] = userId;
+      return;
     }
+    final previous = database.users.get(userId);
+    if (previous != null) {
+      final previousEmail = normalizeEmail('${previous['email']}');
+      if (previousEmail != email) {
+        await database.emailIndex.delete(previousEmail);
+      }
+    }
+    await database.users.put(userId, record);
+    await database.emailIndex.put(email, userId);
+  }
+
+  /// Deletes a user record and its email index entry.
+  Future<void> deleteUser(String userId) async {
+    final database = _database;
+    if (database == null) {
+      final record = _memoryUsers.remove(userId);
+      if (record != null) {
+        _memoryEmailIndex.remove(normalizeEmail('${record['email']}'));
+      }
+      return;
+    }
+    final record = database.users.get(userId);
+    if (record != null) {
+      await database.emailIndex
+          .delete(normalizeEmail('${record['email']}'));
+    }
+    await database.users.delete(userId);
+  }
+
+  /// Reads the active session record, or null when signed out.
+  Future<Map<String, dynamic>?> fetchSession() async {
+    final database = _database;
+    if (database == null) return _memorySession;
+    final raw = database.session.get(AppDatabase.sessionKey);
+    if (raw == null) return null;
+    return Map<String, dynamic>.from(raw);
+  }
+
+  /// Persists the single active session record.
+  Future<void> saveSession(Map<String, dynamic> session) async {
+    final database = _database;
+    if (database == null) {
+      _memorySession = session;
+      return;
+    }
+    await database.session.put(AppDatabase.sessionKey, session);
+  }
+
+  /// Removes the active session record.
+  Future<void> clearSession() async {
+    final database = _database;
+    if (database == null) {
+      _memorySession = null;
+      return;
+    }
+    await database.session.delete(AppDatabase.sessionKey);
+  }
+
+  String _requireString(Map<String, dynamic> record, String field) {
+    final value = record[field];
+    if (value is String) return value;
+    throw ArgumentError.value(value, field, 'must be a String');
   }
 }
