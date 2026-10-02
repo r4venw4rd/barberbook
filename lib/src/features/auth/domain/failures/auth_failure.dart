@@ -6,6 +6,9 @@ part 'auth_failure.freezed.dart';
 abstract class AuthFailure with _$AuthFailure {
   const factory invalidCredentials() = _InvalidCredentials;
   const factory userNotFound() = _UserNotFound;
+  const factory userAlreadyExists() = _UserAlreadyExists;
+  const factory invalidEmail() = _InvalidEmail;
+  const factory weakPassword() = _WeakPassword;
   const factory cancelled() = _Cancelled;
   const factory storageError(String message) = _StorageError;
   const factory unexpected(String message) = _Unexpected;

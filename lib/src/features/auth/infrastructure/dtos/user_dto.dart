@@ -13,6 +13,8 @@ abstract class UserDto with _$UserDto {
     required String phone,
     String? avatarUrl,
     @Default(false) bool isGuest,
+    String? passwordHash,
+    String? createdAt,
   }) = _UserDto;
   const new _();
 
