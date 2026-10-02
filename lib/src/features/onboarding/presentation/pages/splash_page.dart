@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -38,12 +39,10 @@ class _SplashPageState extends ConsumerState<SplashPage>
       curve: Curves.easeOutCubic,
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.88, end: 1).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeOutBack,
-      ),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.88,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     _controller.forward();
 
@@ -166,9 +165,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
                     decoration: BoxDecoration(
                       color: accent.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(AppRadius.pill),
-                      border: Border.all(
-                        color: accent.withValues(alpha: 0.26),
-                      ),
+                      border: Border.all(color: accent.withValues(alpha: 0.26)),
                     ),
                     child: Text(
                       'ARTISAN GROOMING & LOUNGE',

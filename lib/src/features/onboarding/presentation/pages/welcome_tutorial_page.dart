@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,22 +28,19 @@ const List<_TutorialSlideData> _slides = [
   _TutorialSlideData(
     tag: 'ARTISAN CRAFT',
     title: 'Master Barbers,\nSignature Cuts',
-    description:
-        'Experience precision grooming tailored to your style. From razor-sharp skin fades to executive beard detailing.',
+    description: 'Experience precision grooming tailored to your style. From razor-sharp skin fades to executive beard detailing.',
     icon: Icons.content_cut_rounded,
   ),
   _TutorialSlideData(
     tag: 'SEAMLESS BOOKING',
     title: 'Reserve Your Chair\nin 60 Seconds',
-    description:
-        'Browse live barber availability, select your signature services, and lock in your appointment with zero wait time.',
+    description: 'Browse live barber availability, select your signature services, and lock in your appointment with zero wait time.',
     icon: Icons.calendar_month_rounded,
   ),
   _TutorialSlideData(
     tag: 'VIP EXPERIENCE',
     title: 'The Ultimate\nLounge Retreat',
-    description:
-        'Indulge in complimentary craft refreshments, hot steam towels, and premium organic styling treatments.',
+    description: 'Indulge in complimentary craft refreshments, hot steam towels, and premium organic styling treatments.',
     icon: Icons.workspace_premium_rounded,
   ),
 ];
@@ -79,12 +77,11 @@ class _WelcomeTutorialPageState extends ConsumerState<WelcomeTutorialPage> {
   void _nextPage() {
     unawaited(HapticFeedback.lightImpact());
     if (_currentIndex < _slides.length - 1) {
-      unawaited(
+      
         _pageController.nextPage(
           duration: const Duration(milliseconds: 350),
           curve: Curves.easeOutCubic,
-        ),
-      );
+        );
     } else {
       unawaited(_finishOnboarding());
     }
@@ -129,7 +126,9 @@ class _WelcomeTutorialPageState extends ConsumerState<WelcomeTutorialPage> {
                           style: textTheme.labelSmall?.copyWith(
                             letterSpacing: 2.2,
                             fontWeight: FontWeight.w800,
-                            color: isDark ? Colors.white70 : AppColors.foreground,
+                            color: isDark
+                                ? Colors.white70
+                                : AppColors.foreground,
                           ),
                         ),
                       ],
@@ -202,13 +201,13 @@ class _WelcomeTutorialPageState extends ConsumerState<WelcomeTutorialPage> {
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                     colors: isDark
-                                        ? [
+                                        ? const [
                                             AppColors.darkCardElevated,
                                             AppColors.darkCard,
                                           ]
-                                        : [
-                                            Colors.white,
-                                            const Color(0xFFF7F5F0),
+                                        : const [
+                                            AppColors.card,
+                                            AppColors.background,
                                           ],
                                   ),
                                   border: Border.all(
@@ -244,7 +243,9 @@ class _WelcomeTutorialPageState extends ConsumerState<WelcomeTutorialPage> {
                             ),
                             decoration: BoxDecoration(
                               color: accent.withValues(alpha: 0.12),
-                              borderRadius: BorderRadius.circular(AppRadius.pill),
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.pill,
+                              ),
                               border: Border.all(
                                 color: accent.withValues(alpha: 0.28),
                               ),
@@ -269,7 +270,9 @@ class _WelcomeTutorialPageState extends ConsumerState<WelcomeTutorialPage> {
                               fontWeight: FontWeight.w800,
                               height: 1.2,
                               letterSpacing: -0.6,
-                              color: isDark ? Colors.white : AppColors.foreground,
+                              color: isDark
+                                  ? Colors.white
+                                  : AppColors.foreground,
                             ),
                           ),
                           const SizedBox(height: AppSpace.md),
@@ -317,8 +320,8 @@ class _WelcomeTutorialPageState extends ConsumerState<WelcomeTutorialPage> {
                             color: index == _currentIndex
                                 ? accent
                                 : (isDark
-                                    ? AppColors.darkBorder
-                                    : AppColors.border),
+                                      ? AppColors.darkBorder
+                                      : AppColors.border),
                             borderRadius: BorderRadius.circular(AppRadius.pill),
                             boxShadow: index == _currentIndex
                                 ? [
