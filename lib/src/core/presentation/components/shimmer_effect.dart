@@ -1,39 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// A lightweight, premium shimmering container that creates a smooth sweep
 /// animation across all nested [ShimmerBox] elements.
-class AppShimmer extends StatefulWidget {
+class AppShimmer extends HookWidget {
   const new({required this.child, super.key});
 
   final Widget child;
 
   @override
-  State<AppShimmer> createState() => _AppShimmerState();
-}
-
-class _AppShimmerState extends State<AppShimmer>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
+  Widget build(BuildContext context) {
+    final controller = useAnimationController(
       duration: const Duration(milliseconds: 1400),
     )..repeat();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
     final baseColor = context.shimmerBase;
     final highlightColor = context.shimmerHighlight;
@@ -43,21 +24,21 @@ class _AppShimmerState extends State<AppShimmer>
         baseColor: baseColor,
         highlightColor: highlightColor,
         progress: 0.5,
-        child: widget.child,
+        child: child,
       );
     }
 
     return AnimatedBuilder(
-      animation: _controller,
+      animation: controller,
       builder: (context, child) {
         return _ShimmerScope(
           baseColor: baseColor,
           highlightColor: highlightColor,
-          progress: _controller.value,
+          progress: controller.value,
           child: child!,
         );
       },
-      child: widget.child,
+      child: child,
     );
   }
 }
