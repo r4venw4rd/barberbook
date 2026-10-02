@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hair_dryer_app/src/core/l10n/generated/app_localizations.dart';
 import 'package:hair_dryer_app/src/core/router/app_router.dart';
@@ -19,7 +18,7 @@ class AppScrollBehavior extends MaterialScrollBehavior {
   };
 }
 
-class BarberBookApp extends HookConsumerWidget {
+class BarberBookApp extends ConsumerWidget {
   const new({super.key, this.router});
 
   final GoRouter? router;
@@ -28,7 +27,7 @@ class BarberBookApp extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mode = ref.watch(appearanceProvider);
     final locale = ref.watch(localeProvider);
-    final appRouter = useMemoized(() => router ?? createAppRouter(), [router]);
+    final appRouter = router ?? ref.watch(appRouterProvider);
 
     return MaterialApp.router(
       title: 'BarberBook',
