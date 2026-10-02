@@ -9,11 +9,7 @@ import 'package:hair_dryer_app/src/features/appointments/domain/entities/appoint
 /// Modern modal bottom sheet for appointment cancellation.
 class CancelAppointmentModal extends StatelessWidget {
   /// Creates the cancel appointment modal.
-  const new({
-    required this.appointment,
-    required this.onConfirm,
-    super.key,
-  });
+  const new({required this.appointment, required this.onConfirm, super.key});
 
   /// The appointment to be cancelled.
   final Appointment appointment;
@@ -141,9 +137,7 @@ class CancelAppointmentModal extends StatelessWidget {
                         const SizedBox(height: 2),
                         Text(
                           '${dayLabel(appointment.start, context)} · '
-                          '${formatTimeOfDay(
-                            TimeOfDay.fromDateTime(appointment.start),
-                          )} · ${l10n.withBarber(appointment.barber.name)}',
+                          '${formatTimeOfDay(TimeOfDay.fromDateTime(appointment.start))} · ${l10n.withBarber(appointment.barber.name)}',
                           style: textTheme.bodySmall,
                           overflow: TextOverflow.ellipsis,
                         ),

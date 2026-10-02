@@ -112,11 +112,9 @@ class BookingSuccessPage extends HookConsumerWidget {
                   width: double.infinity,
                   height: kTouchTarget + 4,
                   child: OutlinedButton.icon(
-                    onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(l10n.calendarAdded),
-                      ),
-                    ),
+                    onPressed: () => ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text(l10n.calendarAdded))),
                     icon: const Icon(Icons.event_available, size: 20),
                     label: Text(l10n.addToCalendar),
                   ),

@@ -72,9 +72,7 @@ class TicketCard extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: context.isDarkTheme
-                      ? const Color(0xFF1E293B)
-                      : const Color(0xFFEFF6FF),
+                  color: context.ticketCouponSurface,
                   borderRadius: BorderRadius.circular(AppRadius.sm),
                   border: Border.all(color: context.borderSurface),
                 ),

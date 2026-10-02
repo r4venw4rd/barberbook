@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
+import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/core/utils/formatters.dart';
 
+/// Horizontal calendar strip allowing the user to select an appointment date.
 class DateStrip extends StatelessWidget {
   const new({required this.selected, required this.onSelect, super.key});
 
@@ -34,11 +36,10 @@ class DateStrip extends StatelessWidget {
               day.month == selected.month &&
               day.day == selected.day;
           final isToday = day == today;
-
           final fg = closed
               ? Theme.of(context).colorScheme.onSurfaceVariant
               : isSelected
-              ? Colors.white
+              ? AppColors.onPrimary
               : Theme.of(context).colorScheme.onSurface;
 
           return Semantics(
@@ -50,9 +51,7 @@ class DateStrip extends StatelessWidget {
                     '${isToday ? ', ${l10n.today.toLowerCase()}' : ''}',
             excludeSemantics: true,
             child: Tooltip(
-              message: closed
-                  ? l10n.closedOnSundays
-                  : longDate(day, context),
+              message: closed ? l10n.closedOnSundays : longDate(day, context),
               child: GestureDetector(
                 key: ValueKey('day-$index'),
                 onTap: closed ? null : () => onSelect(day),
@@ -65,16 +64,28 @@ class DateStrip extends StatelessWidget {
                     duration: const Duration(milliseconds: 180),
                     width: 62,
                     decoration: BoxDecoration(
-                      color: isSelected ? activeColor : Colors.transparent,
+                      gradient: isSelected ? context.primaryGradient : null,
+                      color: isSelected ? null : AppColors.clear,
                       borderRadius: BorderRadius.circular(AppRadius.lg),
                       border: Border.all(
                         color: isSelected
-                            ? activeColor
+                            ? AppColors.clear
                             : isToday
                             ? activeColor
                             : context.borderSurface,
                         width: isToday && !isSelected ? 1.5 : 1,
                       ),
+                      boxShadow: isSelected
+                          ? [
+                              BoxShadow(
+                                color: context.primaryShadow.withValues(
+                                  alpha: 0.35,
+                                ),
+                                blurRadius: 10,
+                                offset: const Offset(0, 3),
+                              ),
+                            ]
+                          : null,
                     ),
                     child: Opacity(
                       opacity: closed ? 0.4 : 1,

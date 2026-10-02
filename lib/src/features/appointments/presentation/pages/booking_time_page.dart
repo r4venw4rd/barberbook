@@ -24,7 +24,11 @@ class TimePickerPage extends HookConsumerWidget {
 
   static DateTime _firstOpenDay(DateTime from) {
     // Start from tomorrow to prevent past date bookings
-    var day = DateTime(from.year, from.month, from.day).add(const Duration(days: 1));
+    var day = DateTime(
+      from.year,
+      from.month,
+      from.day,
+    ).add(const Duration(days: 1));
     // Skip weekends and past dates
     for (var i = 0; i < 30; i++) {
       // Only accept weekdays (Monday=1 to Friday=5)

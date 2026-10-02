@@ -45,7 +45,9 @@ class ReviewPage extends HookConsumerWidget {
       if (!draft.isComplete || isSubmitting.value) return;
       isSubmitting.value = true;
       await Future<void>.delayed(const Duration(milliseconds: 850));
-      ref.read(appointmentsProvider.notifier).add(
+      ref
+          .read(appointmentsProvider.notifier)
+          .add(
             Appointment(
               id: 'apt-${start.microsecondsSinceEpoch}',
               service: service,
@@ -72,9 +74,8 @@ class ReviewPage extends HookConsumerWidget {
                 title: l10n.reviewConfirm,
                 step: 4,
                 totalSteps: 4,
-                onBack: () => context.canPop()
-                    ? context.pop()
-                    : context.go('/book/time'),
+                onBack: () =>
+                    context.canPop() ? context.pop() : context.go('/book/time'),
               ),
               const SizedBox(height: AppSpace.xs),
               ServiceSummaryBar(service: service),
@@ -91,8 +92,9 @@ class ReviewPage extends HookConsumerWidget {
                     const SizedBox(height: AppSpace.xl),
                     ReviewNotesCard(
                       controller: notesController,
-                      onChanged:
-                          ref.read(bookingDraftProvider.notifier).setNotes,
+                      onChanged: ref
+                          .read(bookingDraftProvider.notifier)
+                          .setNotes,
                     ),
                   ],
                 ),

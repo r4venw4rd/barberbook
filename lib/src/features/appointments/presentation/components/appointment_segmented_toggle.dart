@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
+/// Two-segment toggle switcher for upcoming and past appointments.
 class AppointmentSegmentedToggle extends StatelessWidget {
   const new({
     required this.upLabel,
@@ -17,7 +19,8 @@ class AppointmentSegmentedToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activeColor = context.accentStrong;
+    final textTheme = Theme.of(context).textTheme;
+    final onSurfaceVariant = Theme.of(context).colorScheme.onSurfaceVariant;
 
     Widget segment({
       required String label,
@@ -39,30 +42,22 @@ class AppointmentSegmentedToggle extends StatelessWidget {
               height: 44,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                gradient: isSelected
-                    ? LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          activeColor.withValues(alpha: 0.18),
-                          activeColor.withValues(alpha: 0.08),
-                        ],
-                      )
-                    : null,
-                color: isSelected ? null : Colors.transparent,
+                gradient: isSelected ? context.primaryGradient : null,
                 borderRadius: BorderRadius.circular(AppRadius.md),
-                border: Border.all(
-                  color: isSelected
-                      ? activeColor.withValues(alpha: 0.50)
-                      : Colors.transparent,
-                ),
+                boxShadow: isSelected
+                    ? [
+                        BoxShadow(
+                          color: context.primaryShadow.withValues(alpha: 0.32),
+                          blurRadius: 10,
+                          offset: const Offset(0, 3),
+                        ),
+                      ]
+                    : null,
               ),
               child: Text(
                 label,
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: isSelected
-                      ? activeColor
-                      : Theme.of(context).colorScheme.onSurfaceVariant,
+                style: textTheme.titleSmall?.copyWith(
+                  color: isSelected ? AppColors.onPrimary : onSurfaceVariant,
                   fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                 ),
               ),

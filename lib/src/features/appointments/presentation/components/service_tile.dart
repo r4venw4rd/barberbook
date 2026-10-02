@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
+import 'package:hair_dryer_app/src/core/presentation/components/gradient_tick.dart';
 import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
@@ -65,15 +66,9 @@ class ServiceTile extends StatelessWidget {
                         duration: const Duration(milliseconds: 200),
                         curve: Curves.easeOutBack,
                         child: selected
-                            ? Padding(
-                                padding: const EdgeInsets.only(
-                                  left: AppSpace.xs,
-                                ),
-                                child: Icon(
-                                  Icons.check_circle,
-                                  size: 18,
-                                  color: activeColor,
-                                ),
+                            ? const Padding(
+                                padding: EdgeInsets.only(left: AppSpace.xs),
+                                child: GradientTick(),
                               )
                             : const SizedBox.shrink(),
                       ),

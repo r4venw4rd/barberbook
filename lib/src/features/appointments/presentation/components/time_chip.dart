@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
+import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 import 'package:hair_dryer_app/src/features/appointments/domain/entities/time_slot.dart';
 
+/// Selectable appointment time-slot chip.
 class TimeChip extends StatelessWidget {
   const new({
     required this.slot,
@@ -32,21 +34,17 @@ class TimeChip extends StatelessWidget {
         : '';
 
     final background = isSelected
-        ? activeColor
+        ? null
         : unavailable
-        ? (context.isDarkTheme
-              ? const Color(0xFF161F33)
-              : const Color(0xFFF1F5F9))
+        ? context.slotUnavailableSurface
         : context.cardSurface;
     final foreground = isSelected
-        ? Colors.white
+        ? AppColors.onPrimary
         : unavailable
         ? Theme.of(context).colorScheme.onSurfaceVariant
         : Theme.of(context).colorScheme.onSurface;
 
-    final statusLabel = slot.booked
-        ? l10n.timeSlotBooked
-        : l10n.timeSlotPassed;
+    final statusLabel = slot.booked ? l10n.timeSlotBooked : l10n.timeSlotPassed;
     final selectedSuffix = isSelected ? ', ${l10n.timeSlotSelected}' : '';
     final semanticLabel = unavailable
         ? '${slot.label}, $statusLabel'
@@ -67,18 +65,26 @@ class TimeChip extends StatelessWidget {
           width: 104,
           height: kTouchTarget,
           decoration: BoxDecoration(
+            gradient: isSelected ? context.primaryGradient : null,
             color: background,
             borderRadius: BorderRadius.circular(AppRadius.md),
             border: Border.all(
-              color: isSelected
-                  ? activeColor
-                  : unavailable
-                  ? Colors.transparent
+              color: isSelected || unavailable
+                  ? AppColors.clear
                   : context.borderSurface,
             ),
+            boxShadow: isSelected
+                ? [
+                    BoxShadow(
+                      color: context.primaryShadow.withValues(alpha: 0.30),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ]
+                : null,
           ),
           child: Material(
-            color: Colors.transparent,
+            color: AppColors.clear,
             child: InkWell(
               onTap: onTap != null
                   ? () {
@@ -90,13 +96,18 @@ class TimeChip extends StatelessWidget {
               child: Center(
                 child: Text(
                   '${slot.label}$suffix',
-                  style: textTheme.titleSmall?.copyWith(
-                    color: foreground,
-                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                    decoration: unavailable ? TextDecoration.lineThrough : null,
-                    decorationColor: unavailable ? foreground : null,
-                    fontSize: unavailable ? 13 : 15,
-                  ),
+                  style:
+                      (unavailable ? textTheme.bodySmall : textTheme.titleSmall)
+                          ?.copyWith(
+                            color: foreground,
+                            fontWeight: isSelected
+                                ? FontWeight.w700
+                                : FontWeight.w600,
+                            decoration: unavailable
+                                ? TextDecoration.lineThrough
+                                : null,
+                            decorationColor: unavailable ? foreground : null,
+                          ),
                 ),
               ),
             ),

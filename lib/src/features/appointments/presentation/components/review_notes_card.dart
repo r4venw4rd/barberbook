@@ -6,11 +6,7 @@ import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 /// Card containing notes field for barber.
 class ReviewNotesCard extends StatelessWidget {
   /// Creates the review notes card.
-  const new({
-    required this.controller,
-    required this.onChanged,
-    super.key,
-  });
+  const new({required this.controller, required this.onChanged, super.key});
 
   /// The text controller for notes.
   final TextEditingController controller;
