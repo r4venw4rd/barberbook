@@ -6,7 +6,7 @@ import 'package:hive_ce_flutter/hive_ce_flutter.dart';
 /// Boxes are opened once during bootstrap and shared through
 /// [appDatabaseProvider].
 class AppDatabase {
-  const AppDatabase._({
+  const new _({
     required this.users,
     required this.emailIndex,
     required this.session,
