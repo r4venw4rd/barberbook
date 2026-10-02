@@ -135,7 +135,7 @@ class HomeHeroCard extends ConsumerWidget {
                   children: [
                     PrimaryButton(
                       onPressed: onBook,
-                      gradient: AppColors.darkPrimaryGradient,
+                      gradient: AppColors.primaryGradient,
                       foregroundColor: AppColors.darkOnPrimary,
                       child: Text(
                         l10n.bookAppointment,
