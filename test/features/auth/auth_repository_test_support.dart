@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:hair_dryer_app/src/core/database/app_database.dart';
 import 'package:hair_dryer_app/src/features/auth/domain/entities/user.dart';
