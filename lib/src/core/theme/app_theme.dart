@@ -318,9 +318,7 @@ abstract final class AppTheme {
         space: 1,
       ),
       tabBarTheme: TabBarThemeData(
-        indicatorColor: isDark
-            ? AppColors.darkPrimary
-            : AppColors.primaryStrong,
+        indicatorColor: isDark ? AppColors.darkPrimary : AppColors.primary,
         labelColor: isDark ? AppColors.darkForeground : AppColors.foreground,
         unselectedLabelColor: isDark
             ? AppColors.darkMutedForeground
@@ -331,9 +329,7 @@ abstract final class AppTheme {
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: isDark ? AppColors.darkCard : AppColors.card,
-        indicatorColor: (isDark
-                ? AppColors.darkPrimary
-                : AppColors.primary)
+        indicatorColor: (isDark ? AppColors.darkPrimary : AppColors.primary)
             .withValues(alpha: 0.12),
         elevation: 0,
         height: 68,
@@ -342,7 +338,7 @@ abstract final class AppTheme {
           (states) => IconThemeData(
             size: states.contains(WidgetState.selected) ? 26 : 24,
             color: states.contains(WidgetState.selected)
-                ? (isDark ? AppColors.darkPrimary : AppColors.primaryStrong)
+                ? (isDark ? AppColors.darkPrimary : AppColors.primary)
                 : (isDark
                       ? AppColors.darkMutedForeground
                       : AppColors.mutedForeground),
@@ -354,7 +350,7 @@ abstract final class AppTheme {
                 ? FontWeight.w700
                 : FontWeight.w500,
             color: states.contains(WidgetState.selected)
-                ? (isDark ? AppColors.darkPrimary : AppColors.primaryStrong)
+                ? (isDark ? AppColors.darkPrimary : AppColors.primary)
                 : (isDark
                       ? AppColors.darkMutedForeground
                       : AppColors.mutedForeground),
@@ -363,14 +359,16 @@ abstract final class AppTheme {
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
-        backgroundColor: isDark ? AppColors.darkCard : const Color(0xFF0F172A),
-        contentTextStyle: textTheme.bodyMedium?.copyWith(color: Colors.white),
+        backgroundColor: isDark ? AppColors.darkCard : AppColors.foreground,
+        contentTextStyle: textTheme.bodyMedium?.copyWith(
+          color: AppColors.onPrimary,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.md),
         ),
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: isDark ? AppColors.darkPrimary : AppColors.primaryStrong,
+        color: isDark ? AppColors.darkPrimary : AppColors.primary,
       ),
       listTileTheme: ListTileThemeData(
         shape: RoundedRectangleBorder(
@@ -381,13 +379,13 @@ abstract final class AppTheme {
       switchTheme: SwitchThemeData(
         thumbColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.selected)
-              ? (isDark ? const Color(0xFF001018) : Colors.white)
+              ? (isDark ? AppColors.darkBackground : AppColors.onPrimary)
               : null,
         ),
         trackColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.selected)
-              ? (isDark ? AppColors.darkPrimary : AppColors.primaryStrong)
-              : (isDark ? AppColors.darkMuted : const Color(0xFFCBD5E1)),
+              ? (isDark ? AppColors.darkPrimary : AppColors.primary)
+              : (isDark ? AppColors.darkMuted : AppColors.border),
         ),
       ),
     );
@@ -430,7 +428,7 @@ extension ThemeExtras on BuildContext {
 
   /// Slightly elevated card surface (for nested surfaces in dark mode).
   Color get cardElevatedSurface =>
-      isDarkTheme ? AppColors.darkCardElevated : AppColors.muted;
+      isDarkTheme ? AppColors.darkCardElevated : AppColors.card;
 
   /// Muted surface colour.
   Color get mutedSurface => isDarkTheme ? AppColors.darkMuted : AppColors.muted;
@@ -444,8 +442,53 @@ extension ThemeExtras on BuildContext {
       isDarkTheme ? AppColors.darkPrimary : AppColors.primary;
 
   /// Accent colour at low alpha, used for tinted selection backgrounds.
-  Color get accentTint => accentStrong.withValues(alpha: 0.12);
+  Color get accentTint =>
+      accentStrong.withValues(alpha: isDarkTheme ? 0.12 : 0.08);
 
   /// Gold glow for selected or highlighted premium surfaces.
-  Color get goldGlow => accentStrong.withValues(alpha: 0.18);
+  Color get goldGlow =>
+      accentStrong.withValues(alpha: isDarkTheme ? 0.18 : 0.10);
+
+  /// Primary button and interactive brand fill gradient.
+  LinearGradient get primaryGradient =>
+      isDarkTheme ? AppColors.darkPrimaryGradient : AppColors.primaryGradient;
+
+  /// Coloured glow shadow under primary buttons and active indicators.
+  Color get primaryShadow =>
+      isDarkTheme ? AppColors.darkShadowPrimary : AppColors.shadowPrimary;
+
+  /// Hero card background gradient.
+  LinearGradient get heroGradient =>
+      isDarkTheme ? AppColors.heroGradient : AppColors.lightHeroGradient;
+
+  /// Offer banner background gradient.
+  LinearGradient get offerGradient =>
+      isDarkTheme ? AppColors.darkOfferGradient : AppColors.lightOfferGradient;
+
+  /// Service summary bar background gradient.
+  LinearGradient get summaryGradient => isDarkTheme
+      ? AppColors.darkSummaryGradient
+      : AppColors.lightSummaryGradient;
+
+  /// Unselected slot chip surface.
+  Color get slotSurface =>
+      isDarkTheme ? AppColors.slotDark : AppColors.slotLight;
+
+  /// Unavailable slot surface.
+  Color get slotUnavailableSurface => isDarkTheme
+      ? AppColors.darkSlotUnavailable
+      : AppColors.lightSlotUnavailable;
+
+  /// Ticket card coupon background.
+  Color get ticketCouponSurface =>
+      isDarkTheme ? AppColors.darkTicketCoupon : AppColors.lightTicketCoupon;
+
+  /// Shimmer base placeholder colour.
+  Color get shimmerBase =>
+      isDarkTheme ? AppColors.darkShimmerBase : AppColors.lightShimmerBase;
+
+  /// Shimmer animated wave colour.
+  Color get shimmerHighlight => isDarkTheme
+      ? AppColors.darkShimmerHighlight
+      : AppColors.lightShimmerHighlight;
 }
