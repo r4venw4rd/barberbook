@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/app.dart';
 import 'package:hair_dryer_app/src/features/profile/application/notifiers/appearance_notifier.dart';
 import 'package:hair_dryer_app/src/features/profile/application/notifiers/locale_notifier.dart';
+
+import 'helpers/app_harness.dart';
 
 void main() {
   testWidgets('Given app launch, '
       'When rendered, '
       'Then display home screen with booking entry points', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [localeProvider.overrideWith(_EnLocale.new)],
-        child: const BarberBookApp(),
-      ),
+    final overrides = await appOverrides(
+      extra: [localeProvider.overrideWith(_EnLocale.new)],
     );
-    await tester.pump(const Duration(milliseconds: 100));
+    await seedSignedInSession(overrides);
+    await pumpApp(tester, overrides: overrides);
 
     expect(find.text('Book appointment'), findsWidgets);
     await tester.scrollUntilVisible(find.text('Services'), 100);
@@ -32,13 +30,11 @@ void main() {
   testWidgets('Given user on home, '
       'When booking funnel is executed, '
       'Then complete appointment successfully', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [localeProvider.overrideWith(_EnLocale.new)],
-        child: const BarberBookApp(),
-      ),
+    final overrides = await appOverrides(
+      extra: [localeProvider.overrideWith(_EnLocale.new)],
     );
-    await tester.pump(const Duration(milliseconds: 100));
+    await seedSignedInSession(overrides);
+    await pumpApp(tester, overrides: overrides);
 
     await tester.tap(find.text('Book appointment').first);
     await tester.pumpAndSettle();
@@ -112,16 +108,14 @@ void main() {
   testWidgets('Given dark mode appearance override, '
       'When rendered, '
       'Then theme is dark and funnel renders correctly', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          appearanceProvider.overrideWith(_DarkAppearance.new),
-          localeProvider.overrideWith(_EnLocale.new),
-        ],
-        child: const BarberBookApp(),
-      ),
+    final overrides = await appOverrides(
+      extra: [
+        appearanceProvider.overrideWith(_DarkAppearance.new),
+        localeProvider.overrideWith(_EnLocale.new),
+      ],
     );
-    await tester.pump(const Duration(milliseconds: 100));
+    await seedSignedInSession(overrides);
+    await pumpApp(tester, overrides: overrides);
 
     expect(
       tester.widget<MaterialApp>(find.byType(MaterialApp)).themeMode,
@@ -142,13 +136,11 @@ void main() {
   testWidgets('Given user inside booking funnel, '
       'When back button is tapped at each step, '
       'Then navigate back to previous step or home', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [localeProvider.overrideWith(_EnLocale.new)],
-        child: const BarberBookApp(),
-      ),
+    final overrides = await appOverrides(
+      extra: [localeProvider.overrideWith(_EnLocale.new)],
     );
-    await tester.pump(const Duration(milliseconds: 100));
+    await seedSignedInSession(overrides);
+    await pumpApp(tester, overrides: overrides);
 
     // Open booking funnel (Step 1)
     await tester.tap(find.text('Book appointment').first);
@@ -196,13 +188,11 @@ void main() {
   testWidgets('Given user switches language to Turkish, '
       'When Profile language selector is used, '
       'Then UI updates to Turkish across entire app', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [localeProvider.overrideWith(_EnLocale.new)],
-        child: const BarberBookApp(),
-      ),
+    final overrides = await appOverrides(
+      extra: [localeProvider.overrideWith(_EnLocale.new)],
     );
-    await tester.pump(const Duration(milliseconds: 100));
+    await seedSignedInSession(overrides);
+    await pumpApp(tester, overrides: overrides);
 
     // Navigate to Profile tab via NavigationBar item
     await tester.tap(find.byIcon(Icons.person_outline_rounded));
