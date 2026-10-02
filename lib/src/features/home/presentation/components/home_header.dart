@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
@@ -41,10 +42,7 @@ class HomeHeader extends ConsumerWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [
-                    accent,
-                    accent.withValues(alpha: 0.5),
-                  ],
+                  colors: [accent, accent.withValues(alpha: 0.5)],
                 ),
               ),
               child: AppAvatar(
@@ -62,9 +60,7 @@ class HomeHeader extends ConsumerWidget {
               children: [
                 Text(
                   greeting(context),
-                  style: textTheme.bodySmall?.copyWith(
-                    letterSpacing: 0.1,
-                  ),
+                  style: textTheme.bodySmall?.copyWith(letterSpacing: 0.1),
                 ),
                 Text(
                   name,
@@ -88,9 +84,8 @@ class HomeHeader extends ConsumerWidget {
             ),
             child: IconButton(
               padding: EdgeInsets.zero,
-              onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(l10n.noNotifications)),
-              ),
+              onPressed: () => ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(l10n.noNotifications))),
               icon: Badge(
                 smallSize: 7,
                 child: Icon(

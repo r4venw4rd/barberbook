@@ -32,17 +32,15 @@ class BarberScroller extends ConsumerWidget {
           itemBuilder: (context, index) {
             final barber = barbers[index];
             final isAvailable = barber.isAvailableToday;
-            final availColor =
-                isAvailable ? context.successText : context.warningText;
+            final availColor = isAvailable
+                ? context.successText
+                : context.warningText;
 
             return SizedBox(
               width: 176,
               child: SoftCard(
-                radius: AppRadius.xl,
                 onTap: () {
-                  ref
-                      .read(bookingDraftProvider.notifier)
-                      .selectBarber(barber);
+                  ref.read(bookingDraftProvider.notifier).selectBarber(barber);
                   unawaited(context.push('/book/barber'));
                 },
                 child: Column(
@@ -87,8 +85,9 @@ class BarberScroller extends ConsumerWidget {
                             ),
                             decoration: BoxDecoration(
                               color: availColor.withValues(alpha: 0.12),
-                              borderRadius:
-                                  BorderRadius.circular(AppRadius.pill),
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.pill,
+                              ),
                             ),
                             child: Text(
                               isAvailable ? l10n.today : l10n.tomorrow,
