@@ -15,8 +15,6 @@ generated_plugin_registrant.dart
 lib/src/core/l10n/generated/
 
 # Platform-specific
-android/
-ios/
 linux/
 macos/
 windows/
