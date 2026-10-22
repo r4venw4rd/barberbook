@@ -1,9 +1,9 @@
+import 'package:barberbook/src/core/presentation/components/app_shimmer.dart';
+import 'package:barberbook/src/core/presentation/components/bouncing_button.dart';
+import 'package:barberbook/src/core/presentation/components/frosted_app_bar.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/app_shimmer.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/bouncing_button.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/frosted_app_bar.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 void main() {
   group('Premium UI Components Tests', () {

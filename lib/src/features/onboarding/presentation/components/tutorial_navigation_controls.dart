@@ -1,7 +1,7 @@
+import 'package:barberbook/src/core/presentation/components/primary_button.dart';
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Top brand row and optional skip action.
 class TutorialHeader extends StatelessWidget {

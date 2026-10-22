@@ -1,6 +1,5 @@
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Section title with an optional trailing action, used to break a page into
 /// labelled groups. Features a gold accent bar on the left of the title.

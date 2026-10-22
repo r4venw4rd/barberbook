@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:barberbook/src/core/database/app_database.dart';
+import 'package:barberbook/src/features/auth/domain/entities/user.dart';
+import 'package:barberbook/src/features/auth/domain/failures/auth_failure.dart';
+import 'package:barberbook/src/features/auth/infrastructure/repositories/auth_repository.dart';
+import 'package:barberbook/src/features/auth/infrastructure/services/auth_local_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hair_dryer_app/src/core/database/app_database.dart';
-import 'package:hair_dryer_app/src/features/auth/domain/entities/user.dart';
-import 'package:hair_dryer_app/src/features/auth/domain/failures/auth_failure.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/repositories/auth_repository.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/services/auth_local_service.dart';
 
 final authLocalServiceProvider = Provider<AuthLocalService>((ref) {
   final database = ref.watch(appDatabaseProvider);

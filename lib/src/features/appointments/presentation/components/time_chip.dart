@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/time_slot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/time_slot.dart';
 
 /// Selectable appointment time-slot chip.
 class TimeChip extends StatelessWidget {

@@ -1,7 +1,7 @@
+import 'package:barberbook/src/core/presentation/components/shimmer_effect.dart';
+import 'package:barberbook/src/core/presentation/components/soft_card.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/shimmer_effect.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Horizontal service scroller placeholder.
 class ServiceScrollerSkeleton extends StatelessWidget {

@@ -1,5 +1,5 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
 import 'package:intl/intl.dart';
 
 /// Renders [time] as a 24h `HH:mm` string.

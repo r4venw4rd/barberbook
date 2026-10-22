@@ -1,10 +1,10 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/auth/application/notifiers/auth_notifier.dart';
+import 'package:barberbook/src/features/auth/presentation/components/sign_in_form.dart';
+import 'package:barberbook/src/features/auth/presentation/components/sign_up_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
-import 'package:hair_dryer_app/src/features/auth/presentation/components/sign_in_form.dart';
-import 'package:hair_dryer_app/src/features/auth/presentation/components/sign_up_form.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Switchable sign in / sign up forms with a guest shortcut.

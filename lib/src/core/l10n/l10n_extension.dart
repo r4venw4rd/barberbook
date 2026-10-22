@@ -1,8 +1,8 @@
+import 'package:barberbook/src/core/l10n/generated/app_localizations.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/appointment.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/barber.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/shop_service.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hair_dryer_app/src/core/l10n/generated/app_localizations.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/barber.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
 
 /// Extension for convenient access to [AppLocalizations].
 extension L10nExtension on BuildContext {

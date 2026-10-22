@@ -1,4 +1,4 @@
-import 'package:hair_dryer_app/src/features/appointments/infrastructure/services/appointment_seed_maps.dart';
+import 'package:barberbook/src/features/appointments/infrastructure/services/appointment_seed_maps.dart';
 
 class AppointmentMockService {
   Future<List<Map<String, dynamic>>> fetchServices() async {

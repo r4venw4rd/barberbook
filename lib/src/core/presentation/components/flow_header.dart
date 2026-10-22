@@ -1,7 +1,7 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Booking funnel header: back button, title, "Step X of Y" + segment bars.
 class FlowHeader extends StatelessWidget {

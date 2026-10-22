@@ -1,7 +1,7 @@
+import 'package:barberbook/src/core/router/app_router.dart';
+import 'package:barberbook/src/features/auth/domain/entities/user.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/core/router/app_router.dart';
-import 'package:hair_dryer_app/src/features/auth/domain/entities/user.dart';
 
 void main() {
   const user = User(

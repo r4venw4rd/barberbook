@@ -1,6 +1,6 @@
+import 'package:barberbook/src/core/presentation/components/initials_avatar.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/initials_avatar.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Adaptive avatar component with network photo support and initials fallback.
 class AppAvatar extends StatelessWidget {

@@ -1,8 +1,8 @@
+import 'package:barberbook/src/core/database/app_database.dart';
+import 'package:barberbook/src/features/auth/infrastructure/repositories/auth_repository.dart';
+import 'package:barberbook/src/features/auth/infrastructure/services/auth_local_service.dart';
+import 'package:barberbook/src/features/auth/infrastructure/services/password_hasher.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/core/database/app_database.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/repositories/auth_repository.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/services/auth_local_service.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/services/password_hasher.dart';
 
 import 'auth_repository_test_support.dart';
 

@@ -1,17 +1,17 @@
 import 'dart:async';
 
+import 'package:barberbook/src/core/database/local_storage_service.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/appointment.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/barber.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/shop_service.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/time_slot.dart';
+import 'package:barberbook/src/features/appointments/domain/failures/appointment_failure.dart';
+import 'package:barberbook/src/features/appointments/infrastructure/dtos/appointment_dto.dart';
+import 'package:barberbook/src/features/appointments/infrastructure/dtos/barber_dto.dart';
+import 'package:barberbook/src/features/appointments/infrastructure/dtos/shop_service_dto.dart';
+import 'package:barberbook/src/features/appointments/infrastructure/repositories/appointment_seed_data.dart';
+import 'package:barberbook/src/features/appointments/infrastructure/services/appointment_mock_service.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/barber.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/time_slot.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/failures/appointment_failure.dart';
-import 'package:hair_dryer_app/src/features/appointments/infrastructure/dtos/appointment_dto.dart';
-import 'package:hair_dryer_app/src/features/appointments/infrastructure/dtos/barber_dto.dart';
-import 'package:hair_dryer_app/src/features/appointments/infrastructure/dtos/shop_service_dto.dart';
-import 'package:hair_dryer_app/src/features/appointments/infrastructure/repositories/appointment_seed_data.dart';
-import 'package:hair_dryer_app/src/features/appointments/infrastructure/services/appointment_mock_service.dart';
 
 class AppointmentRepository {
   new({AppointmentMockService? service, this.storage})

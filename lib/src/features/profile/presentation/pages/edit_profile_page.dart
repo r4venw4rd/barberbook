@@ -1,15 +1,15 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/bottom_action_bar.dart';
+import 'package:barberbook/src/core/presentation/components/content_constraint.dart';
+import 'package:barberbook/src/core/presentation/components/frosted_app_bar.dart';
+import 'package:barberbook/src/core/presentation/components/primary_button.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/auth/application/notifiers/auth_notifier.dart';
+import 'package:barberbook/src/features/profile/presentation/components/avatar_edit_card.dart';
+import 'package:barberbook/src/features/profile/presentation/components/profile_form_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/bottom_action_bar.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/frosted_app_bar.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/components/avatar_edit_card.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/components/profile_form_card.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Dedicated full screen for editing user profile details.

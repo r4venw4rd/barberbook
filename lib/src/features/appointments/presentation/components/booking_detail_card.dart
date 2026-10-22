@@ -1,11 +1,11 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/soft_card.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/core/utils/formatters.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/barber.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/shop_service.dart';
+import 'package:barberbook/src/features/appointments/presentation/components/booking_detail_row.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/core/utils/formatters.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/barber.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/booking_detail_row.dart';
 
 /// Card showing appointment details breakdown during review.
 class BookingDetailCard extends StatelessWidget {

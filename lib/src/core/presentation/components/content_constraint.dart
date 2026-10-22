@@ -1,5 +1,5 @@
+import 'package:barberbook/src/core/theme/breakpoints.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/breakpoints.dart';
 
 class ContentConstraint extends StatelessWidget {
   const new({required this.child, super.key});

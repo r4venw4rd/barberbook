@@ -1,8 +1,8 @@
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/time_slot.dart';
+import 'package:barberbook/src/features/appointments/presentation/components/notice_line.dart';
+import 'package:barberbook/src/features/appointments/presentation/components/slot_section.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/time_slot.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/notice_line.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/slot_section.dart';
 
 /// Displays availability notice and time slots grouped by day period.
 class TimeSlotSections extends StatelessWidget {

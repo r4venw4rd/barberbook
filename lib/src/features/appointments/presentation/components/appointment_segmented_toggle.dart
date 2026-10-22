@@ -1,6 +1,6 @@
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Two-segment toggle switcher for upcoming and past appointments.
 class AppointmentSegmentedToggle extends StatelessWidget {

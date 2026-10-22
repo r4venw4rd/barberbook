@@ -1,7 +1,7 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/auth/presentation/components/auth_form.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/auth/presentation/components/auth_form.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Modal bottom sheet for sign in, registration and account switching.

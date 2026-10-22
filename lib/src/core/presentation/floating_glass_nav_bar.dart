@@ -1,8 +1,8 @@
 import 'dart:ui';
 
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Floating, animated navigation bar used by the mobile app shell.
 class FloatingGlassNavBar extends StatelessWidget {

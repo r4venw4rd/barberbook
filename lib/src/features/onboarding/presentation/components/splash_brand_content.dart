@@ -1,7 +1,7 @@
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/home/presentation/components/snipping_scissors.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/features/home/presentation/components/snipping_scissors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Centered animated brand lockup shown on the splash page.
 class SplashBrandContent extends StatelessWidget {

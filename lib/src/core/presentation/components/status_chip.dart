@@ -1,7 +1,7 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/appointment_status.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment_status.dart';
 
 /// Refined status badge with subtle indicator dot and clean typography.
 class StatusChip extends StatelessWidget {

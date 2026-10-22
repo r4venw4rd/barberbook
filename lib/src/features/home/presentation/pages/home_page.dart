@@ -1,19 +1,19 @@
 import 'dart:async';
 
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/content_constraint.dart';
+import 'package:barberbook/src/core/presentation/components/section_header.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/appointments/application/notifiers/appointments_notifier.dart';
+import 'package:barberbook/src/features/home/presentation/components/barber_scroller.dart';
+import 'package:barberbook/src/features/home/presentation/components/home_header.dart';
+import 'package:barberbook/src/features/home/presentation/components/home_hero_card.dart';
+import 'package:barberbook/src/features/home/presentation/components/next_appointment_card.dart';
+import 'package:barberbook/src/features/home/presentation/components/offer_banner.dart';
+import 'package:barberbook/src/features/home/presentation/components/service_scroller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/section_header.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/appointments/application/notifiers/appointments_notifier.dart';
-import 'package:hair_dryer_app/src/features/home/presentation/components/barber_scroller.dart';
-import 'package:hair_dryer_app/src/features/home/presentation/components/home_header.dart';
-import 'package:hair_dryer_app/src/features/home/presentation/components/home_hero_card.dart';
-import 'package:hair_dryer_app/src/features/home/presentation/components/next_appointment_card.dart';
-import 'package:hair_dryer_app/src/features/home/presentation/components/offer_banner.dart';
-import 'package:hair_dryer_app/src/features/home/presentation/components/service_scroller.dart';
 
 class HomePage extends ConsumerWidget {
   const new({super.key});

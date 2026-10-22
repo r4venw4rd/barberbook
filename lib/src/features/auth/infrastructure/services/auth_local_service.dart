@@ -1,4 +1,4 @@
-import 'package:hair_dryer_app/src/core/database/app_database.dart';
+import 'package:barberbook/src/core/database/app_database.dart';
 
 /// Raw authentication I/O against the local database.
 ///

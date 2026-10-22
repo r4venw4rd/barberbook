@@ -1,6 +1,6 @@
+import 'package:barberbook/src/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 
 /// Creates the color scheme and typography shared by all app themes.
 abstract final class AppThemePalette {

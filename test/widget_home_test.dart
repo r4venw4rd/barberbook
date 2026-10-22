@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:barberbook/src/features/profile/application/notifiers/locale_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/features/profile/application/notifiers/locale_notifier.dart';
+
 import 'helpers/app_harness.dart';
 import 'helpers/app_test_overrides.dart';
 

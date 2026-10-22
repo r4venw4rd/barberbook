@@ -1,7 +1,7 @@
+import 'package:barberbook/src/features/appointments/domain/entities/barber.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/booking_draft.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/shop_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/barber.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/booking_draft.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
 
 class BookingDraftNotifier extends Notifier<BookingDraft> {
   @override
