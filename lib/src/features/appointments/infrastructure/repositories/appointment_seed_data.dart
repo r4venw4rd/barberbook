@@ -1,8 +1,8 @@
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment_status.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/barber.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/service_category.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/appointment.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/appointment_status.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/barber.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/service_category.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/shop_service.dart';
 
 /// Builds the initial local demo appointments for an empty store.
 List<Appointment> buildAppointmentSeedData(DateTime now) {

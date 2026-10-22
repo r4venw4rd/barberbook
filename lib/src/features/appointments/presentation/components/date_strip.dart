@@ -1,8 +1,8 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/core/utils/formatters.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/core/utils/formatters.dart';
 
 /// Horizontal calendar strip allowing the user to select an appointment date.
 class DateStrip extends StatelessWidget {

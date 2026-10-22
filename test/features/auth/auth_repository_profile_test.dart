@@ -1,6 +1,7 @@
+import 'package:barberbook/src/features/auth/domain/entities/user.dart';
+import 'package:barberbook/src/features/auth/domain/failures/auth_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/features/auth/domain/failures/auth_failure.dart';
-import 'package:hair_dryer_app/src/features/auth/domain/entities/user.dart';
+
 import 'auth_repository_test_support.dart';
 
 void main() {

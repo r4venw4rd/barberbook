@@ -1,12 +1,12 @@
 import 'dart:ui';
 
+import 'package:barberbook/src/core/l10n/generated/app_localizations.dart';
+import 'package:barberbook/src/core/router/app_router.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/profile/application/notifiers/appearance_notifier.dart';
+import 'package:barberbook/src/features/profile/application/notifiers/locale_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/l10n/generated/app_localizations.dart';
-import 'package:hair_dryer_app/src/core/router/app_router.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/profile/application/notifiers/appearance_notifier.dart';
-import 'package:hair_dryer_app/src/features/profile/application/notifiers/locale_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AppScrollBehavior extends MaterialScrollBehavior {

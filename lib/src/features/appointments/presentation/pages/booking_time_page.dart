@@ -1,21 +1,21 @@
 import 'dart:async';
 
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/bottom_action_bar.dart';
+import 'package:barberbook/src/core/presentation/components/content_constraint.dart';
+import 'package:barberbook/src/core/presentation/components/flow_header.dart';
+import 'package:barberbook/src/core/presentation/components/primary_button.dart';
+import 'package:barberbook/src/core/presentation/components/service_summary_bar.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/core/utils/formatters.dart';
+import 'package:barberbook/src/features/appointments/application/notifiers/appointments_notifier.dart';
+import 'package:barberbook/src/features/appointments/application/notifiers/booking_draft_notifier.dart';
+import 'package:barberbook/src/features/appointments/presentation/components/date_strip.dart';
+import 'package:barberbook/src/features/appointments/presentation/components/legend_dot.dart';
+import 'package:barberbook/src/features/appointments/presentation/components/time_slot_sections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/bottom_action_bar.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/flow_header.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/service_summary_bar.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/core/utils/formatters.dart';
-import 'package:hair_dryer_app/src/features/appointments/application/notifiers/appointments_notifier.dart';
-import 'package:hair_dryer_app/src/features/appointments/application/notifiers/booking_draft_notifier.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/date_strip.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/legend_dot.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/time_slot_sections.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TimePickerPage extends HookConsumerWidget {

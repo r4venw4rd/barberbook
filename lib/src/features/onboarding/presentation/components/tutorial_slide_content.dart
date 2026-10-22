@@ -1,7 +1,7 @@
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/onboarding/presentation/components/tutorial_slide_data.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/onboarding/presentation/components/tutorial_slide_data.dart';
 
 /// Artwork and copy for one onboarding carousel slide.
 class TutorialSlideContent extends StatelessWidget {

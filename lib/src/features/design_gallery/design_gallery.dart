@@ -6,19 +6,19 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/appointments/application/notifiers/appointments_notifier.dart';
+import 'package:barberbook/src/features/appointments/application/notifiers/booking_draft_notifier.dart';
+import 'package:barberbook/src/features/appointments/presentation/pages/appointments_page.dart';
+import 'package:barberbook/src/features/appointments/presentation/pages/booking_barber_page.dart';
+import 'package:barberbook/src/features/appointments/presentation/pages/booking_review_page.dart';
+import 'package:barberbook/src/features/appointments/presentation/pages/booking_service_page.dart';
+import 'package:barberbook/src/features/appointments/presentation/pages/booking_success_page.dart';
+import 'package:barberbook/src/features/appointments/presentation/pages/booking_time_page.dart';
+import 'package:barberbook/src/features/home/presentation/pages/home_page.dart';
+import 'package:barberbook/src/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/appointments/application/notifiers/appointments_notifier.dart';
-import 'package:hair_dryer_app/src/features/appointments/application/notifiers/booking_draft_notifier.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/pages/appointments_page.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/pages/booking_barber_page.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/pages/booking_review_page.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/pages/booking_service_page.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/pages/booking_success_page.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/pages/booking_time_page.dart';
-import 'package:hair_dryer_app/src/features/home/presentation/pages/home_page.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/pages/profile_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const _screens = <String>[

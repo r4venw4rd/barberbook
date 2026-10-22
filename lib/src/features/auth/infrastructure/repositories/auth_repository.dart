@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:barberbook/src/features/auth/domain/entities/user.dart';
+import 'package:barberbook/src/features/auth/domain/failures/auth_failure.dart';
+import 'package:barberbook/src/features/auth/infrastructure/dtos/user_dto.dart';
+import 'package:barberbook/src/features/auth/infrastructure/services/auth_local_service.dart';
+import 'package:barberbook/src/features/auth/infrastructure/services/password_hasher.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hair_dryer_app/src/features/auth/domain/entities/user.dart';
-import 'package:hair_dryer_app/src/features/auth/domain/failures/auth_failure.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/dtos/user_dto.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/services/auth_local_service.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/services/password_hasher.dart';
 
 /// Repository enforcing authentication rules over the local credential store.
 class AuthRepository {

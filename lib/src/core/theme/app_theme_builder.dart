@@ -1,9 +1,9 @@
+import 'package:barberbook/src/core/theme/app_theme_controls.dart';
+import 'package:barberbook/src/core/theme/app_theme_input.dart';
+import 'package:barberbook/src/core/theme/app_theme_material.dart';
+import 'package:barberbook/src/core/theme/app_theme_navigation.dart';
+import 'package:barberbook/src/core/theme/app_theme_palette.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme_controls.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme_input.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme_material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme_navigation.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme_palette.dart';
 
 /// Composes the app's small theme builders into a complete Material theme.
 ThemeData buildAppTheme(Brightness brightness) {

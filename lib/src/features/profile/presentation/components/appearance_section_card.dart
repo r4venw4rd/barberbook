@@ -1,10 +1,10 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/gradient_tick.dart';
+import 'package:barberbook/src/core/presentation/components/soft_card.dart';
+import 'package:barberbook/src/features/profile/application/notifiers/appearance_notifier.dart';
+import 'package:barberbook/src/features/profile/presentation/components/profile_menu_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/gradient_tick.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
-import 'package:hair_dryer_app/src/features/profile/application/notifiers/appearance_notifier.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/components/profile_menu_tile.dart';
 
 class AppearanceSectionCard extends ConsumerWidget {
   const new({super.key});

@@ -1,10 +1,10 @@
+import 'package:barberbook/src/app.dart';
+import 'package:barberbook/src/core/database/local_storage_service.dart';
+import 'package:barberbook/src/features/auth/application/notifiers/auth_notifier.dart';
+import 'package:barberbook/src/features/auth/infrastructure/services/auth_local_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/app.dart';
-import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
-import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/services/auth_local_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Provider overrides every widget test boots with: onboarding already

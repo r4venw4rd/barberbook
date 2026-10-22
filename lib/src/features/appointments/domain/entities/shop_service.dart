@@ -1,5 +1,5 @@
+import 'package:barberbook/src/features/appointments/domain/entities/service_category.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/service_category.dart';
 
 part 'shop_service.freezed.dart';
 

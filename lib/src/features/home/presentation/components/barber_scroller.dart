@@ -1,16 +1,16 @@
 import 'dart:async';
 
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/app_avatar.dart';
+import 'package:barberbook/src/core/presentation/components/app_shimmer.dart';
+import 'package:barberbook/src/core/presentation/components/rating_badge.dart';
+import 'package:barberbook/src/core/presentation/components/soft_card.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/appointments/application/notifiers/appointments_notifier.dart';
+import 'package:barberbook/src/features/appointments/application/notifiers/booking_draft_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/app_avatar.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/app_shimmer.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/rating_badge.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/appointments/application/notifiers/appointments_notifier.dart';
-import 'package:hair_dryer_app/src/features/appointments/application/notifiers/booking_draft_notifier.dart';
 
 class BarberScroller extends ConsumerWidget {
   const new({super.key});

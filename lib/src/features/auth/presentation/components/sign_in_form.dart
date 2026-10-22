@@ -1,11 +1,11 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/primary_button.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/auth/application/notifiers/auth_notifier.dart';
+import 'package:barberbook/src/features/auth/presentation/components/auth_error_text.dart';
+import 'package:barberbook/src/features/auth/presentation/components/auth_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/auth/application/notifiers/auth_notifier.dart';
-import 'package:hair_dryer_app/src/features/auth/presentation/components/auth_error_text.dart';
-import 'package:hair_dryer_app/src/features/auth/presentation/components/auth_field.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Email and password form that starts a stored session.

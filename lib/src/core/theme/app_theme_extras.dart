@@ -1,6 +1,6 @@
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_gradients.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_gradients.dart';
 
 /// Palette helpers that resolve light/dark design tokens from a context.
 extension ThemeExtras on BuildContext {

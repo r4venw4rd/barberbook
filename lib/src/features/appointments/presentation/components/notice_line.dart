@@ -1,5 +1,5 @@
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 class NoticeLine extends StatelessWidget {
   const new({required this.text, super.key});

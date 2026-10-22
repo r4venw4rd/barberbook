@@ -1,5 +1,5 @@
+import 'package:barberbook/src/features/auth/infrastructure/services/password_hasher.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/features/auth/infrastructure/services/password_hasher.dart';
 
 void main() {
   // PBKDF2-HMAC-SHA256 reference vector: password "password", salt "salt",

@@ -1,7 +1,6 @@
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/soft_card.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// A lightweight, premium shimmering container that creates a smooth sweep
 /// animation across all nested [ShimmerBox] elements.

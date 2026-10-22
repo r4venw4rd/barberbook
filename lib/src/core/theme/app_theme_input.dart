@@ -1,6 +1,6 @@
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme_tokens.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme_tokens.dart';
 
 /// Input and divider styles shared by app forms and layouts.
 abstract final class AppThemeInput {

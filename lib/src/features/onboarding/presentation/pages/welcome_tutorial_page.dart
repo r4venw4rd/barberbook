@@ -1,15 +1,15 @@
 import 'dart:async';
 
+import 'package:barberbook/src/core/presentation/components/app_background_pattern.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/onboarding/application/notifiers/onboarding_notifier.dart';
+import 'package:barberbook/src/features/onboarding/presentation/components/tutorial_navigation_controls.dart';
+import 'package:barberbook/src/features/onboarding/presentation/components/tutorial_slide_content.dart';
+import 'package:barberbook/src/features/onboarding/presentation/components/tutorial_slide_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/app_background_pattern.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/onboarding/application/notifiers/onboarding_notifier.dart';
-import 'package:hair_dryer_app/src/features/onboarding/presentation/components/tutorial_navigation_controls.dart';
-import 'package:hair_dryer_app/src/features/onboarding/presentation/components/tutorial_slide_content.dart';
-import 'package:hair_dryer_app/src/features/onboarding/presentation/components/tutorial_slide_data.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Introduces first-time users to the app's signature barbershop experience.

@@ -1,5 +1,5 @@
+import 'package:barberbook/src/core/database/local_storage_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hair_dryer_app/src/core/database/local_storage_service.dart';
 
 const String _onboardingSeenKey = 'has_seen_onboarding_v1';
 

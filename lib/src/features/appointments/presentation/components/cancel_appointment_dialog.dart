@@ -1,10 +1,10 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/app_avatar.dart';
+import 'package:barberbook/src/core/presentation/components/primary_button.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/core/utils/formatters.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/appointment.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/app_avatar.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/primary_button.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/core/utils/formatters.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/appointment.dart';
 
 /// Modern modal bottom sheet for appointment cancellation.
 class CancelAppointmentModal extends StatelessWidget {

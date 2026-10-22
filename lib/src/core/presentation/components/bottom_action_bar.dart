@@ -1,9 +1,8 @@
 import 'dart:ui';
 
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Fixed bottom action bar with safe-area clearance and frosted glass blur.
 /// Scroll views that use it must add matching bottom padding so content is

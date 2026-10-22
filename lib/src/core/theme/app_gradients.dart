@@ -1,5 +1,5 @@
+import 'package:barberbook/src/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
 
 /// Gradient tokens shared by app surfaces and controls.
 abstract final class AppGradients {

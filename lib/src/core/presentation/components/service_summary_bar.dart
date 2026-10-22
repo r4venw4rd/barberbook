@@ -1,9 +1,9 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/appointments/domain/entities/shop_service.dart';
+import 'package:barberbook/src/features/appointments/presentation/components/service_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/appointments/domain/entities/shop_service.dart';
-import 'package:hair_dryer_app/src/features/appointments/presentation/components/service_icon.dart';
 
 /// Compact recap of the chosen service, shown on later funnel steps.
 class ServiceSummaryBar extends StatelessWidget {

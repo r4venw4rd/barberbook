@@ -1,10 +1,9 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/app_background_pattern.dart';
+import 'package:barberbook/src/core/presentation/floating_glass_nav_bar.dart';
+import 'package:barberbook/src/core/presentation/nav_bar_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/app_background_pattern.dart';
-import 'package:hair_dryer_app/src/core/presentation/floating_glass_nav_bar.dart';
-import 'package:hair_dryer_app/src/core/presentation/nav_bar_observer.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// Mobile shell with floating glass navigation.
 class MobileAppShell extends StatelessWidget {

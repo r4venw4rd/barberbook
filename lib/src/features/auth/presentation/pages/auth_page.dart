@@ -1,10 +1,10 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/app_background_pattern.dart';
+import 'package:barberbook/src/core/presentation/components/content_constraint.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/auth/presentation/components/auth_form.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/app_background_pattern.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/auth/presentation/components/auth_form.dart';
 
 /// Full screen sign in and registration flow.
 class AuthPage extends StatelessWidget {

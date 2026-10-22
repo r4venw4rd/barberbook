@@ -1,8 +1,8 @@
 import 'dart:ui';
 
+import 'package:barberbook/src/core/theme/app_colors.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/theme/app_colors.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
 
 /// A premium frosted-glass app bar that blurs content scrolling beneath it.
 class FrostedAppBar extends StatelessWidget implements PreferredSizeWidget {

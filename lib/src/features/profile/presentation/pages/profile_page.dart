@@ -1,13 +1,13 @@
+import 'package:barberbook/src/core/l10n/l10n_extension.dart';
+import 'package:barberbook/src/core/presentation/components/content_constraint.dart';
+import 'package:barberbook/src/core/presentation/components/section_header.dart';
+import 'package:barberbook/src/core/theme/app_theme.dart';
+import 'package:barberbook/src/features/profile/presentation/components/account_section_card.dart';
+import 'package:barberbook/src/features/profile/presentation/components/appearance_section_card.dart';
+import 'package:barberbook/src/features/profile/presentation/components/language_section_card.dart';
+import 'package:barberbook/src/features/profile/presentation/components/profile_header_card.dart';
+import 'package:barberbook/src/features/profile/presentation/components/support_section_card.dart';
 import 'package:flutter/material.dart';
-import 'package:hair_dryer_app/src/core/l10n/l10n_extension.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/content_constraint.dart';
-import 'package:hair_dryer_app/src/core/presentation/components/section_header.dart';
-import 'package:hair_dryer_app/src/core/theme/app_theme.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/components/account_section_card.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/components/appearance_section_card.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/components/language_section_card.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/components/profile_header_card.dart';
-import 'package:hair_dryer_app/src/features/profile/presentation/components/support_section_card.dart';
 
 class ProfilePage extends StatelessWidget {
   const new({super.key});
