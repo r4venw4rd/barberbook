@@ -50,3 +50,7 @@ Thumbs.db
 .history
 .svn/
 migrate_working_dir/
+
+# AI tooling
+.agents/
+.opencode/
