@@ -40,6 +40,7 @@ review → confirm, plus appointments management and profile settings.
 | Area | Choice |
 |---|---|
 | Framework | Flutter 3.47 / Dart ^3.13 |
+| Platforms | Android, iOS (platform projects in `android/`, `ios/`) |
 | State | Riverpod 3 (Notifier/AsyncNotifier) + flutter_hooks |
 | Routing | go_router with `StatefulShellRoute` tabs and session-based redirects |
 | Error handling | `Either<Failure, T>` (fpdart) + freezed unions |
@@ -86,8 +87,13 @@ lib/
 
 ```bash
 flutter pub get
+dart run build_runner build --delete-conflicting-outputs
 flutter run
 ```
+
+Android and iOS platform projects are checked in (application id
+`dev.tayfunucuncu.barberbook`). Other platforms are not included; add one with
+e.g. `flutter create --platforms=linux .` if you need it.
 
 Useful commands:
 
@@ -103,6 +109,7 @@ flutter analyze
 flutter test
 
 # design review harness: renders each screen in light + dark for screenshots
+# (needs a desktop platform first, e.g. `flutter create --platforms=linux .`)
 flutter run -t lib/src/features/design_gallery/design_gallery.dart -d linux
 # pick a screen: BB_SCREEN=home|service|barber|time|review|success|appointments|profile
 ```
