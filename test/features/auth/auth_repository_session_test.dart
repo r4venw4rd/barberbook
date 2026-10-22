@@ -1,6 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hair_dryer_app/src/features/auth/domain/failures/auth_failure.dart';
 import 'package:hair_dryer_app/src/core/database/app_database.dart';
+import 'package:hair_dryer_app/src/features/auth/infrastructure/repositories/auth_repository.dart';
+import 'package:hair_dryer_app/src/features/auth/infrastructure/services/auth_local_service.dart';
+import 'package:hair_dryer_app/src/features/auth/infrastructure/services/password_hasher.dart';
+
 import 'auth_repository_test_support.dart';
 
 void main() {
@@ -26,7 +29,7 @@ void main() {
           'Then the session survives', () async {
         final registered = await harness.registerAna();
         final reopened = AuthRepository(
-          AuthLocalService(database),
+          AuthLocalService(harness.database),
           const PasswordHasher(iterations: 1),
         );
   
